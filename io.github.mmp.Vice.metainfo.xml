@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.mmp.Vice</id>
+  
+  <name>Vice</name>
+  <summary>US ATC Simulator</summary>
+  
+  <metadata_license>MIT</metadata_license>
+  <project_license>AGPL-3.0-only</project_license>
+  
+  <description>
+    <p>
+      An air traffic control simulator simulating the United States National Airspace System
+    </p>
+  </description>
+  
+  <launchable type="desktop-id">io.github.mmp.Vice.desktop</launchable>
+</component>

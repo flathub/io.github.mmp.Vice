@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Vice
+Exec=vice
+Type=Application
+Icon=io.github.mmp.Vice
+Categories=Game;
