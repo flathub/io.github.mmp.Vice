@@ -3,16 +3,30 @@
   <id>io.github.mmp.Vice</id>
   
   <name>Vice</name>
-  <summary>US ATC Simulator</summary>
+  <summary>Air Traffic Control Simulator</summary>
   
   <metadata_license>MIT</metadata_license>
   <project_license>AGPL-3.0-only</project_license>
   
   <description>
     <p>
-      An air traffic control simulator simulating the United States National Airspace System
+      vice is an air traffic control simulator, focused on TRACON. It presents a STARS-like interface, but with simulated traffic and other controllers. It also supports multiple users, where each person controls a different position at a facility.
+    </p>
+    <p>
+      vice supports departure and arrival control scenarios in numerous TRACONs and ATCT/TRACONs, currently: A11, A80, A90, AAC, ABE, ABQ, AGS, ALB, ASE, AUS, AVL, BGR, BHM, BIL, BNA, BOI, BTV, BUF, C90, CHS, CID, CLE, CLT, COS, CPR, D01, D10, D21, DAB, EWR, F11, GSO, GSP, GTF, I90, IND, JAX, L30, M98, MCI, MDT, MIA, MKE, N90, NCT, OKC, P31, P50, P80, PCT, PHL, PIT, PVD, PWM, R90, RDU, S46, S56, SAV, SBA, SBN, SCT, SDF, SGF, SYR, TPA, and Y90. New scenarios are regularly added.
     </p>
   </description>
-  
+
+  <developer id="io.github.mmp">
+    <name>Matt Pharr</name>
+  </developer>
+
   <launchable type="desktop-id">io.github.mmp.Vice.desktop</launchable>
+
+  <url type="homepage">https://pharr.org/vice/</url>
+  <url type="vcs-browser">https://github.com/mmp/vice</url>
+  
+  <content_rating type="oars-1.0">
+    <content_attribute id="social-chat">intense</content_attribute>
+  </content_rating>
 </component>
