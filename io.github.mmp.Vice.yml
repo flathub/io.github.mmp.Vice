@@ -20,6 +20,7 @@ modules:
       - go build -tags "imguifreetype,downloadresources" -o vice ./cmd/vice
       - install -Dm755 vice /app/bin/vice
       - mkdir -p /app/bin/fonts && cp -r fonts/*.zst /app/bin/fonts
+      - install -Dm644 cmd/vice/icons/tower-256x256.png /app/share/icons/hicolor/256x256/apps/io.github.mmp.Vice.png
       - install -Dm644 cmd/vice/icons/tower-128x128.png /app/share/icons/hicolor/128x128/apps/io.github.mmp.Vice.png
       - install -Dm644 cmd/vice/icons/tower-48x48.png /app/share/icons/hicolor/48x48/apps/io.github.mmp.Vice.png
       - install -Dm644 io.github.mmp.Vice.desktop -t /app/share/applications
