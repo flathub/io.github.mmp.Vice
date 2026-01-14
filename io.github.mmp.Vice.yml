@@ -13,23 +13,6 @@ finish-args:
   - --device=dri
   - --filesystem=xdg-run/app/com.discordapp.Discord:create
 modules:
-  - name: extra-cmake-modules
-    buildsystem: cmake-ninja
-    sources:
-      - type: git
-        url: https://github.com/KDE/extra-cmake-modules.git
-        tag: v6.22.0
-  - name: glfw
-    buildsystem: cmake-ninja
-    config-opts:
-      - -DBUILD_SHARED_LIBS=ON
-      - -DGLFW_BUILD_DOCS=OFF
-      - -DGLFW_BUILD_TESTS=OFF
-      - -DGLFW_BUILD_EXAMPLES=OFF
-    sources:
-      - type: git
-        url: https://github.com/glfw/glfw.git
-        tag: 3.3.10
   - name: vice
     buildsystem: simple
     build-commands:
