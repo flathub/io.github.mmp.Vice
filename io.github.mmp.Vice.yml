@@ -20,10 +20,12 @@ modules:
       - go build -tags "imguifreetype,downloadresources" -o vice ./cmd/vice
       - install -Dm755 vice /app/bin/vice
       - mkdir -p /app/bin/fonts && cp -r fonts/*.zst /app/bin/fonts
+      - install -D -t /app/bin vice-wrapper.sh
       - install -Dm644 cmd/vice/icons/tower-256x256.png /app/share/icons/hicolor/256x256/apps/io.github.mmp.Vice.png
       - install -Dm644 cmd/vice/icons/tower-128x128.png /app/share/icons/hicolor/128x128/apps/io.github.mmp.Vice.png
       - install -Dm644 cmd/vice/icons/tower-48x48.png /app/share/icons/hicolor/48x48/apps/io.github.mmp.Vice.png
       - install -Dm644 upstream-meta/linux/io.github.mmp.Vice.desktop -t /app/share/applications
+      - desktop-file-edit --set-key=Exec --set-value='/app/bin/vice-wrapper.sh' /app/share/applications/io.github.mmp.Vice.desktop
       - install -Dm644 upstream-meta/linux/io.github.mmp.Vice.metainfo.xml /app/share/metainfo/io.github.mmp.Vice.metainfo.xml
     build-options:
       append-path: /usr/lib/sdk/golang/bin
@@ -42,3 +44,12 @@ modules:
         path: modules.txt
         type: file
       - go.mod.yml
+      - type: script
+        commands:
+          - |
+            for i in {0..9}; do
+              test -S $XDG_RUNTIME_DIR/discord-ipc-$i ||
+                ln -sf {app/com.discordapp.Discord,$XDG_RUNTIME_DIR}/discord-ipc-$i;
+            done
+            vice
+        dest-filename: vice-wrapper.sh
