@@ -37,11 +37,6 @@
   strip-components: 3
   type: archive
   url: https://proxy.golang.org/github.com/goforj/godump/@v/v1.9.0.zip
-- dest: vendor/github.com/gorilla/websocket
-  sha256: dbbd31dd0f08548c5dc43e4c2f12bbba66abff5252b224b1cd06afbb72783a76
-  strip-components: 3
-  type: archive
-  url: https://proxy.golang.org/github.com/gorilla/websocket/@v/v1.5.3.zip
 - dest: vendor/github.com/hashicorp/golang-lru/v2
   sha256: 2eb92ff13970bccd460efae14255bfc03bb51474da0137e477a60f95561acc30
   strip-components: 4
@@ -127,6 +122,11 @@
   strip-components: 3
   type: archive
   url: https://proxy.golang.org/golang.org/x/sync/@v/v0.17.0.zip
+- dest: vendor/golang.org/x/sys
+  sha256: 182df79c87135f6dbd0d45656b6527e9221e28899ee44cc6cc7e7a396aedaef9
+  strip-components: 3
+  type: archive
+  url: https://proxy.golang.org/golang.org/x/sys/@v/v0.33.0.zip
 - dest: vendor/google.golang.org/api
   sha256: 9841acf81b0f891979c0ecd1c170739ae60a960c44bffaf8b88537ba52616ad8
   strip-components: 2
@@ -387,11 +387,6 @@
   strip-components: 3
   type: archive
   url: https://proxy.golang.org/golang.org/x/net/@v/v0.40.0.zip
-- dest: vendor/golang.org/x/sys
-  sha256: 182df79c87135f6dbd0d45656b6527e9221e28899ee44cc6cc7e7a396aedaef9
-  strip-components: 3
-  type: archive
-  url: https://proxy.golang.org/golang.org/x/sys/@v/v0.33.0.zip
 - dest: vendor/golang.org/x/text
   sha256: 3f218b1dd9a690036d1226f46f142fc7ae3cc9cd4f28610b96bb8080b7e194c9
   strip-components: 3
