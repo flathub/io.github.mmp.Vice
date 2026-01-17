@@ -35,6 +35,7 @@ modules:
       - type: git
         url: https://github.com/mmp/vice.git
         tag: v0.13.3
+      # TODO: remove after upstream merges desktop/metainfo pr
       - type: git
         url: https://github.com/c4181/vice.git
         branch: add-linux-metadata
