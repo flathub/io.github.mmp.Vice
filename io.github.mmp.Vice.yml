@@ -32,7 +32,7 @@ modules:
       - ninja -C build
       - cp build/cimgui.a vendor/github.com/AllenDang/cimgui-go/lib/linux/cimgui.a
       - ./upstream-meta/linux/generate-manifest.sh resources cmd/vice/manifest.json
-      - ./build.sh --release
+      - ./build.sh --release --vulkan
       - install -Dm755 vice /app/bin/vice
       - mkdir -p /app/bin/fonts && cp -r fonts/*.zst /app/bin/fonts
       - install -D -t /app/bin vice-wrapper.sh
@@ -50,9 +50,8 @@ modules:
       - type: git
         url: https://github.com/mmp/vice.git
         tag: v0.13.3
-        commit: f5519243b74bbc5ed1477172a79af50fbf5a5ae2
-      # TODO: remove after the next release
         commit: 9203d8a5affe6faf38854e61cbaa4f865904af62
+      # TODO: remove after the next release
       - type: git
         url: https://github.com/mmp/vice.git
         commit: b71bb4ce7d3b30df573951809cd16846a7b3822e
