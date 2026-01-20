@@ -30,7 +30,6 @@ modules:
       - |
         if [ "$FLATPAK_ARCH" = "aarch64" ]; then
           cd vendor/github.com/AllenDang/cimgui-go/lib
-          cd lib
           mkdir linux/arm64
           cmake -Bbuild . -DCMAKE_BUILD_TYPE=Release
           cd build
