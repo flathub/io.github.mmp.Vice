@@ -13,9 +13,32 @@ finish-args:
   - --device=dri
   - --filesystem=xdg-run/app/com.discordapp.Discord:create
 modules:
+  - name: glfw
+    only-arches: [aarch64]
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DGLFW_BUILD_EXAMPLES=OFF
+      - -DGLFW_BUILD_TESTS=OFF
+      - -DGLFW_BUILD_DOCS=OFF
+    sources:
+      - type: git
+        url: https://github.com/glfw/glfw.git
+        tag: 3.3.10
   - name: vice
     buildsystem: simple
     build-commands:
+      - |
+        if [ "$FLATPAK_ARCH" = "aarch64" ]; then
+          cd vendor/github.com/AllenDang/cimgui-go
+          patch -p1 < ${FLATPAK_BUILDER_BUILDDIR}/cimgui-arm64-datatypes.patch
+          patch -p1 < ${FLATPAK_BUILDER_BUILDDIR}/cimgui-arm64.patch
+          cd lib
+          mkdir linux/arm64
+          cmake -Bbuild . -DCMAKE_BUILD_TYPE=Release
+          cd build
+          make -j$(nproc)
+          cp cimgui.a ../linux/arm64/cimgui.a
+        fi
       - ./upstream-meta/linux/generate-manifest.sh resources cmd/vice/manifest.json
       - go build -tags "imguifreetype,downloadresources" -o vice ./cmd/vice
       - install -Dm755 vice /app/bin/vice
@@ -45,6 +68,10 @@ modules:
         path: modules.txt
         type: file
       - go.mod.yml
+      - type: file
+        path: cimgui-arm64.patch
+      - type: file
+        path: cimgui-arm64-datatypes.patch
       - type: script
         commands:
           - |

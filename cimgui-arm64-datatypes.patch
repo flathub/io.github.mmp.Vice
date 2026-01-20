@@ -1,0 +1,199 @@
+diff --git a/cmd/codegen/return_wrapper.go b/cmd/codegen/return_wrapper.go
+index fb407784..6b4103f0 100644
+--- a/cmd/codegen/return_wrapper.go
++++ b/cmd/codegen/return_wrapper.go
+@@ -123,7 +123,7 @@ func getReturnWrapper(
+ 
+ 		// NOTE: Special Case
+ 		if pureType == "char*" {
+-			rw = simplePtrR("int8", "C.char")
++			rw = simplePtrR("datatypes.Char", "C.char")
+ 		}
+ 
+ 		return returnWrapper{
+diff --git a/imgui/funcs.go b/imgui/funcs.go
+index 5683b866..305dff96 100644
+--- a/imgui/funcs.go
++++ b/imgui/funcs.go
+@@ -11,6 +11,7 @@ import (
+ 	"unsafe"
+ 
+ 	"github.com/AllenDang/cimgui-go/internal"
++	"github.com/AllenDang/cimgui-go/utils/datatypes"
+ 	"github.com/AllenDang/cimgui-go/utils/vectors"
+ )
+ 
+@@ -20640,13 +20641,13 @@ func (self Context) SetClipboardHandlerData(v vectors.Vector[int8]) {
+ 	C.wrap_ImGuiContext_SetClipboardHandlerData(selfArg, *vVecArg)
+ }
+ 
+-func (self *Context) ClipboardHandlerData() vectors.Vector[int8] {
++func (self *Context) ClipboardHandlerData() vectors.Vector[datatypes.Char] {
+ 	selfArg, selfFin := self.Handle()
+ 
+ 	defer func() {
+ 		selfFin()
+ 	}()
+-	return vectors.NewVectorFromC(C.wrap_ImGuiContext_GetClipboardHandlerData(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Size, C.wrap_ImGuiContext_GetClipboardHandlerData(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Capacity, (*int8)(C.wrap_ImGuiContext_GetClipboardHandlerData(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Data))
++	return vectors.NewVectorFromC(C.wrap_ImGuiContext_GetClipboardHandlerData(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Size, C.wrap_ImGuiContext_GetClipboardHandlerData(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiContext_GetClipboardHandlerData(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Data))
+ }
+ 
+ func (self Context) SetMenusIdSubmittedThisFrame(v vectors.Vector[ID]) {
+@@ -21676,13 +21677,13 @@ func (self Context) SetTempBuffer(v vectors.Vector[int8]) {
+ 	C.wrap_ImGuiContext_SetTempBuffer(selfArg, *vVecArg)
+ }
+ 
+-func (self *Context) TempBuffer() vectors.Vector[int8] {
++func (self *Context) TempBuffer() vectors.Vector[datatypes.Char] {
+ 	selfArg, selfFin := self.Handle()
+ 
+ 	defer func() {
+ 		selfFin()
+ 	}()
+-	return vectors.NewVectorFromC(C.wrap_ImGuiContext_GetTempBuffer(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Size, C.wrap_ImGuiContext_GetTempBuffer(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Capacity, (*int8)(C.wrap_ImGuiContext_GetTempBuffer(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Data))
++	return vectors.NewVectorFromC(C.wrap_ImGuiContext_GetTempBuffer(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Size, C.wrap_ImGuiContext_GetTempBuffer(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiContext_GetTempBuffer(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Data))
+ }
+ 
+ func (self Context) SetTempKeychordName(v *[64]rune) {
+@@ -25849,13 +25850,13 @@ func (self InputTextDeactivatedState) SetTextA(v vectors.Vector[int8]) {
+ 	C.wrap_ImGuiInputTextDeactivatedState_SetTextA(selfArg, *vVecArg)
+ }
+ 
+-func (self *InputTextDeactivatedState) TextA() vectors.Vector[int8] {
++func (self *InputTextDeactivatedState) TextA() vectors.Vector[datatypes.Char] {
+ 	selfArg, selfFin := self.Handle()
+ 
+ 	defer func() {
+ 		selfFin()
+ 	}()
+-	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextDeactivatedState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextDeactivatedState](selfArg)).Size, C.wrap_ImGuiInputTextDeactivatedState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextDeactivatedState](selfArg)).Capacity, (*int8)(C.wrap_ImGuiInputTextDeactivatedState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextDeactivatedState](selfArg)).Data))
++	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextDeactivatedState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextDeactivatedState](selfArg)).Size, C.wrap_ImGuiInputTextDeactivatedState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextDeactivatedState](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiInputTextDeactivatedState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextDeactivatedState](selfArg)).Data))
+ }
+ 
+ func (self InputTextState) SetCtx(v *Context) {
+@@ -25955,13 +25956,13 @@ func (self InputTextState) SetTextA(v vectors.Vector[int8]) {
+ 	C.wrap_ImGuiInputTextState_SetTextA(selfArg, *vVecArg)
+ }
+ 
+-func (self *InputTextState) TextA() vectors.Vector[int8] {
++func (self *InputTextState) TextA() vectors.Vector[datatypes.Char] {
+ 	selfArg, selfFin := self.Handle()
+ 
+ 	defer func() {
+ 		selfFin()
+ 	}()
+-	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Size, C.wrap_ImGuiInputTextState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Capacity, (*int8)(C.wrap_ImGuiInputTextState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Data))
++	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Size, C.wrap_ImGuiInputTextState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiInputTextState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Data))
+ }
+ 
+ func (self InputTextState) SetTextToRevertTo(v vectors.Vector[int8]) {
+@@ -25978,13 +25979,13 @@ func (self InputTextState) SetTextToRevertTo(v vectors.Vector[int8]) {
+ 	C.wrap_ImGuiInputTextState_SetTextToRevertTo(selfArg, *vVecArg)
+ }
+ 
+-func (self *InputTextState) TextToRevertTo() vectors.Vector[int8] {
++func (self *InputTextState) TextToRevertTo() vectors.Vector[datatypes.Char] {
+ 	selfArg, selfFin := self.Handle()
+ 
+ 	defer func() {
+ 		selfFin()
+ 	}()
+-	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Size, C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Capacity, (*int8)(C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Data))
++	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Size, C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Data))
+ }
+ 
+ func (self InputTextState) SetCallbackTextBackup(v vectors.Vector[int8]) {
+@@ -26001,13 +26002,13 @@ func (self InputTextState) SetCallbackTextBackup(v vectors.Vector[int8]) {
+ 	C.wrap_ImGuiInputTextState_SetCallbackTextBackup(selfArg, *vVecArg)
+ }
+ 
+-func (self *InputTextState) CallbackTextBackup() vectors.Vector[int8] {
++func (self *InputTextState) CallbackTextBackup() vectors.Vector[datatypes.Char] {
+ 	selfArg, selfFin := self.Handle()
+ 
+ 	defer func() {
+ 		selfFin()
+ 	}()
+-	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextState_GetCallbackTextBackup(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Size, C.wrap_ImGuiInputTextState_GetCallbackTextBackup(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Capacity, (*int8)(C.wrap_ImGuiInputTextState_GetCallbackTextBackup(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Data))
++	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextState_GetCallbackTextBackup(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Size, C.wrap_ImGuiInputTextState_GetCallbackTextBackup(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiInputTextState_GetCallbackTextBackup(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Data))
+ }
+ 
+ func (self InputTextState) SetBufCapacity(v int32) {
+@@ -34936,13 +34937,13 @@ func (self TextBuffer) SetBuf(v vectors.Vector[int8]) {
+ 	C.wrap_ImGuiTextBuffer_SetBuf(selfArg, *vVecArg)
+ }
+ 
+-func (self *TextBuffer) Buf() vectors.Vector[int8] {
++func (self *TextBuffer) Buf() vectors.Vector[datatypes.Char] {
+ 	selfArg, selfFin := self.Handle()
+ 
+ 	defer func() {
+ 		selfFin()
+ 	}()
+-	return vectors.NewVectorFromC(C.wrap_ImGuiTextBuffer_GetBuf(internal.ReinterpretCast[*C.ImGuiTextBuffer](selfArg)).Size, C.wrap_ImGuiTextBuffer_GetBuf(internal.ReinterpretCast[*C.ImGuiTextBuffer](selfArg)).Capacity, (*int8)(C.wrap_ImGuiTextBuffer_GetBuf(internal.ReinterpretCast[*C.ImGuiTextBuffer](selfArg)).Data))
++	return vectors.NewVectorFromC(C.wrap_ImGuiTextBuffer_GetBuf(internal.ReinterpretCast[*C.ImGuiTextBuffer](selfArg)).Size, C.wrap_ImGuiTextBuffer_GetBuf(internal.ReinterpretCast[*C.ImGuiTextBuffer](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiTextBuffer_GetBuf(internal.ReinterpretCast[*C.ImGuiTextBuffer](selfArg)).Data))
+ }
+ 
+ func (self TextFilter) SetInputBuf(v *[256]rune) {
+diff --git a/internal/type_wrapper.go b/internal/type_wrapper.go
+index f2129bc7..850bb4dd 100644
+--- a/internal/type_wrapper.go
++++ b/internal/type_wrapper.go
+@@ -8,6 +8,12 @@ import (
+ 	"unsafe"
+ )
+ 
++// Char represents C.char. On amd64 it is equivalent to int8, on arm64 it is uint8.
++// See https://github.com/AllenDang/cimgui-go/issues/140
++type Char interface {
++	~int8 | ~uint8
++}
++
+ // ReinterpretCast acts exactly like C++'s reinterpret_cast.
+ // Intendedd use is to convert packageA.C.MyType to packageB.C.MyType.
+ // make sure your types are identical C types before using it.
+@@ -19,7 +25,7 @@ func ReinterpretCast[RET, SRC any](src SRC) RET {
+ 
+ // WrapString converts Go string to C char*
+ // Default value of RET is C.char
+-func WrapString[RET ~int8](value string) (wrapped *RET, finisher func()) {
++func WrapString[RET Char](value string) (wrapped *RET, finisher func()) {
+ 	wrapped = ReinterpretCast[*RET](C.CString(value))
+ 	finisher = func() { C.free(unsafe.Pointer(wrapped)) } // nolint: gas
+ 	return
+@@ -27,7 +33,7 @@ func WrapString[RET ~int8](value string) (wrapped *RET, finisher func()) {
+ 
+ // WrapStringList converts Go string slice to C char**
+ // Default value of RET is C.char
+-func WrapStringList[RET ~int8](value []string) (wrapped **RET, finisher func()) {
++func WrapStringList[RET Char](value []string) (wrapped **RET, finisher func()) {
+ 	if len(value) == 0 {
+ 		return nil, func() {}
+ 	}
+diff --git a/utils/datatypes/char_signed.go b/utils/datatypes/char_signed.go
+new file mode 100644
+index 00000000..45fe6d5b
+--- /dev/null
++++ b/utils/datatypes/char_signed.go
+@@ -0,0 +1,7 @@
++//go:build amd64 || (arm64 && darwin)
++
++package datatypes
++
++// Char represents underlying type of C.char. On amd64 it is equivalent to int8, on arm64 it is uint8.
++// See https://github.com/AllenDang/cimgui-go/issues/140
++type Char int8
+diff --git a/utils/datatypes/char_unsigned.go b/utils/datatypes/char_unsigned.go
+new file mode 100644
+index 00000000..3bb2f1c6
+--- /dev/null
++++ b/utils/datatypes/char_unsigned.go
+@@ -0,0 +1,7 @@
++//go:build arm64 && !darwin
++
++package datatypes
++
++// Char represents underlying type of C.char. On amd64 it is equivalent to int8, on arm64 it is uint8.
++// See https://github.com/AllenDang/cimgui-go/issues/140
++type Char uint8
+
