@@ -1,3 +1,135 @@
+diff --git a/ImGuiColorTextEdit/cflags.go b/ImGuiColorTextEdit/cflags.go
+index 1c6e9ccb..443adfed 100644
+--- a/ImGuiColorTextEdit/cflags.go
++++ b/ImGuiColorTextEdit/cflags.go
+@@ -3,6 +3,7 @@ package ImGuiColorTextEdit
+ // #cgo CPPFLAGS: -DCIMGUI_DEFINE_ENUMS_AND_STRUCTS -DIMGUI_USE_WCHAR32
+ // #cgo CXXFLAGS: --std=c++11
+ // #cgo amd64,linux LDFLAGS: ${SRCDIR}/../lib/linux/x64/cimgui.a
++// #cgo arm64,linux LDFLAGS: ${SRCDIR}/../lib/linux/arm64/cimgui.
+ // #cgo linux CXXFLAGS: -Wno-changes-meaning -Wno-invalid-conversion -fpermissive
+ // #cgo amd64,windows LDFLAGS: -L${SRCDIR}/../lib/windows/x64 -l:cimgui.a
+ // #cgo amd64,darwin LDFLAGS: ${SRCDIR}/../lib/macos/x64/cimgui.a
+diff --git a/backend/cflags.go b/backend/cflags.go
+index a5393ecf..3afc4c01 100644
+--- a/backend/cflags.go
++++ b/backend/cflags.go
+@@ -3,6 +3,7 @@ package backend
+ // #cgo CPPFLAGS: -DCIMGUI_DEFINE_ENUMS_AND_STRUCTS
+ // #cgo CXXFLAGS: --std=c++11
+ // #cgo amd64,linux LDFLAGS: ${SRCDIR}/../lib/linux/x64/cimgui.a
++// #cgo arm64,linux LDFLAGS: ${SRCDIR}/../lib/linux/arm64/cimgui.a
+ // #cgo linux CXXFLAGS: -Wno-changes-meaning -Wno-invalid-conversion -fpermissive
+ // #cgo amd64,windows LDFLAGS: -L${SRCDIR}/../lib/windows/x64 -l:cimgui.a
+ // #cgo amd64,darwin LDFLAGS: ${SRCDIR}/../lib/macos/x64/cimgui.a
+diff --git a/backend/glfwbackend/cflags.go b/backend/glfwbackend/cflags.go
+index 3adcb9e6..4330c23e 100644
+--- a/backend/glfwbackend/cflags.go
++++ b/backend/glfwbackend/cflags.go
+@@ -3,6 +3,7 @@ package glfwbackend
+ // #cgo CPPFLAGS: -DCIMGUI_DEFINE_ENUMS_AND_STRUCTS
+ // #cgo CXXFLAGS: --std=c++11
+ // #cgo amd64,linux LDFLAGS: ${SRCDIR}/../../lib/linux/x64/cimgui.a
++// #cgo arm64,linux LDFLAGS: ${SRCDIR}/../../lib/linux/arm64/cimgui.a
+ // #cgo linux CXXFLAGS: -Wno-changes-meaning -Wno-invalid-conversion -fpermissive
+ // #cgo amd64,windows LDFLAGS: -L${SRCDIR}/../../lib/windows/x64 -l:cimgui.a
+ // #cgo amd64,darwin LDFLAGS: ${SRCDIR}/../../lib/macos/x64/cimgui.a
+diff --git a/backend/glfwbackend/glfw_backend.go b/backend/glfwbackend/glfw_backend.go
+index 01f54103..e191ca22 100644
+--- a/backend/glfwbackend/glfw_backend.go
++++ b/backend/glfwbackend/glfw_backend.go
+@@ -1,6 +1,7 @@
+ package glfwbackend
+ 
+ // #cgo amd64,linux LDFLAGS: ${SRCDIR}/../../lib/linux/x64/libglfw3.a -ldl -lGL -lX11
++// #cgo arm64,linux LDFLAGS: -lglfw3 -ldl -lGL -lX11
+ // #cgo amd64,windows LDFLAGS: -L${SRCDIR}/../../lib/windows/x64 -l:libglfw3.a -lgdi32 -lopengl32 -limm32
+ // #cgo darwin LDFLAGS: -framework Cocoa -framework IOKit -framework CoreVideo
+ // #cgo amd64,darwin LDFLAGS: ${SRCDIR}/../../lib/macos/x64/libglfw3.a
+diff --git a/backend/sdlbackend/cflags.go b/backend/sdlbackend/cflags.go
+index 1c35025c..dfffb63c 100644
+--- a/backend/sdlbackend/cflags.go
++++ b/backend/sdlbackend/cflags.go
+@@ -3,6 +3,7 @@ package sdlbackend
+ // #cgo CPPFLAGS: -DCIMGUI_DEFINE_ENUMS_AND_STRUCTS
+ // #cgo CXXFLAGS: --std=c++11
+ // #cgo amd64,linux LDFLAGS: ${SRCDIR}/../../lib/linux/x64/cimgui.a
++// #cgo arm64,linux LDFLAGS: ${SRCDIR}/../lib/linux/arm64/cimgui.a
+ // #cgo linux CXXFLAGS: -Wno-changes-meaning -Wno-invalid-conversion -fpermissive
+ // #cgo amd64,windows LDFLAGS: -L${SRCDIR}/../../lib/windows/x64 -l:cimgui.a
+ // #cgo amd64,darwin LDFLAGS: ${SRCDIR}/../../lib/macos/x64/cimgui.a
+diff --git a/backend/sdlbackend/sdl_backend.go b/backend/sdlbackend/sdl_backend.go
+index 35ca5b01..b4c6be97 100644
+--- a/backend/sdlbackend/sdl_backend.go
++++ b/backend/sdlbackend/sdl_backend.go
+@@ -1,6 +1,7 @@
+ package sdlbackend
+ 
+ // #cgo amd64,linux LDFLAGS: ${SRCDIR}/../../lib/linux/x64/libSDL2.a -ldl -lGL -lX11
++// #cgo arm64,linux LDFLAGS: -lSDL2 -ldl -lGL -lX11
+ // #cgo amd64,windows LDFLAGS: -L${SRCDIR}/../../lib/windows/x64 -l:libSDL2.a -lgdi32 -lopengl32 -limm32         -mwindows  -lm -ldinput8 -ldxguid -ldxerr8 -luser32 -lgdi32 -lwinmm -limm32 -lole32 -loleaut32 -lshell32 -lsetupapi -lversion -luuid
+ // #cgo darwin LDFLAGS: -framework Cocoa -framework IOKit -framework CoreVideo -framework CoreAudio
+ // #cgo darwin LDFLAGS: -framework AudioToolbox -framework GameController -liconv
+diff --git a/imgui/cflags.go b/imgui/cflags.go
+index 09ffcdda..81365880 100644
+--- a/imgui/cflags.go
++++ b/imgui/cflags.go
+@@ -3,6 +3,7 @@ package imgui
+ // #cgo CPPFLAGS: -DCIMGUI_DEFINE_ENUMS_AND_STRUCTS -DIMGUI_USE_WCHAR32
+ // #cgo CXXFLAGS: --std=c++11
+ // #cgo amd64,linux LDFLAGS: ${SRCDIR}/../lib/linux/x64/cimgui.a
++// #cgo arm64,linux LDFLAGS: ${SRCDIR}/../lib/linux/arm64/cimgui.a
+ // #cgo linux CXXFLAGS: -Wno-changes-meaning -Wno-invalid-conversion -fpermissive
+ // #cgo amd64,windows LDFLAGS: -L${SRCDIR}/../lib/windows/x64 -l:cimgui.a
+ // #cgo amd64,darwin LDFLAGS: ${SRCDIR}/../lib/macos/x64/cimgui.a
+diff --git a/imguizmo/cflags.go b/imguizmo/cflags.go
+index 853650da..f8a2d07b 100644
+--- a/imguizmo/cflags.go
++++ b/imguizmo/cflags.go
+@@ -3,6 +3,7 @@ package imguizmo
+ // #cgo CPPFLAGS: -DCIMGUI_DEFINE_ENUMS_AND_STRUCTS -DIMGUI_USE_WCHAR32
+ // #cgo CXXFLAGS: --std=c++11
+ // #cgo amd64,linux LDFLAGS: ${SRCDIR}/../lib/linux/x64/cimgui.a
++// #cgo arm64,linux LDFLAGS: ${SRCDIR}/../lib/linux/arm64/cimgui.a
+ // #cgo linux CXXFLAGS: -Wno-changes-meaning -Wno-invalid-conversion -fpermissive
+ // #cgo amd64,windows LDFLAGS: -L${SRCDIR}/../lib/windows/x64 -l:cimgui.a
+ // #cgo amd64,darwin LDFLAGS: ${SRCDIR}/../lib/macos/x64/cimgui.a
+diff --git a/immarkdown/cflags.go b/immarkdown/cflags.go
+index 3549b337..14e313a3 100644
+--- a/immarkdown/cflags.go
++++ b/immarkdown/cflags.go
+@@ -3,6 +3,7 @@ package immarkdown
+ // #cgo CPPFLAGS: -DCIMGUI_DEFINE_ENUMS_AND_STRUCTS -DIMGUI_USE_WCHAR32
+ // #cgo CXXFLAGS: --std=c++11
+ // #cgo amd64,linux LDFLAGS: ${SRCDIR}/../lib/linux/x64/cimgui.a
++// #cgo arm64,linux LDFLAGS: ${SRCDIR}/../lib/linux/arm64/cimgui.a
+ // #cgo linux CXXFLAGS: -Wno-changes-meaning -Wno-invalid-conversion -fpermissive
+ // #cgo amd64,windows LDFLAGS: -L${SRCDIR}/../lib/windows/x64 -l:cimgui.a
+ // #cgo amd64,darwin LDFLAGS: ${SRCDIR}/../lib/macos/x64/cimgui.a
+diff --git a/imnodes/cflags.go b/imnodes/cflags.go
+index 15e035a2..7a32d443 100644
+--- a/imnodes/cflags.go
++++ b/imnodes/cflags.go
+@@ -3,6 +3,7 @@ package imnodes
+ // #cgo CPPFLAGS: -DCIMGUI_DEFINE_ENUMS_AND_STRUCTS -DIMGUI_USE_WCHAR32
+ // #cgo CXXFLAGS: --std=c++11
+ // #cgo amd64,linux LDFLAGS: ${SRCDIR}/../lib/linux/x64/cimgui.a
++// #cgo arm64,linux LDFLAGS: ${SRCDIR}/../lib/linux/arm64/cimgui.a
+ // #cgo linux CXXFLAGS: -Wno-changes-meaning -Wno-invalid-conversion -fpermissive
+ // #cgo amd64,windows LDFLAGS: -L${SRCDIR}/../lib/windows/x64 -l:cimgui.a
+ // #cgo amd64,darwin LDFLAGS: ${SRCDIR}/../lib/macos/x64/cimgui.a
+diff --git a/implot/cflags.go b/implot/cflags.go
+index 6c2a062c..c245b489 100644
+--- a/implot/cflags.go
++++ b/implot/cflags.go
+@@ -3,6 +3,7 @@ package implot
+ // #cgo CPPFLAGS: -DCIMGUI_DEFINE_ENUMS_AND_STRUCTS -DIMGUI_USE_WCHAR32
+ // #cgo CXXFLAGS: --std=c++11
+ // #cgo amd64,linux LDFLAGS: ${SRCDIR}/../lib/linux/x64/cimgui.a
++// #cgo arm64,linux LDFLAGS: ${SRCDIR}/../lib/linux/arm64/cimgui.a
+ // #cgo linux CXXFLAGS: -Wno-changes-meaning -Wno-invalid-conversion -fpermissive
+ // #cgo amd64,windows LDFLAGS: -L${SRCDIR}/../lib/windows/x64 -l:cimgui.a
+ // #cgo amd64,darwin LDFLAGS: ${SRCDIR}/../lib/macos/x64/cimgui.a
 diff --git a/templates/cflags.go b/templates/cflags.go
 index 09ffcdda..81365880 100644
 --- a/templates/cflags.go

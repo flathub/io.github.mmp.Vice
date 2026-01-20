@@ -24,14 +24,6 @@ modules:
       - type: git
         url: https://github.com/glfw/glfw.git
         tag: 3.3.10
-  - name: sdl2
-    only-arches: [aarch64]
-    buildsystem: cmake-ninja
-    builddir: true
-    sources:
-      - type: git
-        url: https://github.com/libsdl-org/SDL.git
-        tag: release-2.32.10
   - name: vice
     buildsystem: simple
     build-commands:
@@ -39,18 +31,16 @@ modules:
         if [ "$FLATPAK_ARCH" = "aarch64" ]; then
           cd vendor/github.com/AllenDang/cimgui-go
           patch -p1 < ${FLATPAK_BUILDER_BUILDDIR}/cimgui-arm64-datatypes.patch
-          patch -u ${FLATPAK_BUILDER_BUILDDIR}/vendor/github.com/AllenDang/cimgui-go/templates/cflags.go -i ${FLATPAK_BUILDER_BUILDDIR}/cimgui-arm64.patch
+          patch -p1 < ${FLATPAK_BUILDER_BUILDDIR}/cimgui-arm64.patch
           cd lib
           mkdir linux/arm64
-          cmake -Bbuild .
+          cmake -Bbuild . -DCMAKE_BUILD_TYPE=Release
           cd build
           make -j$(nproc)
           cp cimgui.a ../linux/arm64/cimgui.a
-          cp ${FLATPAK_DEST}/lib/libglfw3.a ../linux/arm64
-          cp ${FLATPAK_DEST}/lib/libSDL2.a ../linux/arm64
         fi
       - ./upstream-meta/linux/generate-manifest.sh resources cmd/vice/manifest.json
-      - go build -x -v -tags "imguifreetype,downloadresources" -o vice ./cmd/vice
+      - go build -tags "imguifreetype,downloadresources" -o vice ./cmd/vice
       - install -Dm755 vice /app/bin/vice
       - mkdir -p /app/bin/fonts && cp -r fonts/*.zst /app/bin/fonts
       - install -D -t /app/bin vice-wrapper.sh
