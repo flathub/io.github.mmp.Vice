@@ -29,9 +29,7 @@ modules:
     build-commands:
       - |
         if [ "$FLATPAK_ARCH" = "aarch64" ]; then
-          cd vendor/github.com/AllenDang/cimgui-go
-          patch -p1 < ${FLATPAK_BUILDER_BUILDDIR}/cimgui-arm64-datatypes.patch
-          patch -p1 < ${FLATPAK_BUILDER_BUILDDIR}/cimgui-arm64.patch
+          cd vendor/github.com/AllenDang/cimgui-go/lib
           cd lib
           mkdir linux/arm64
           cmake -Bbuild . -DCMAKE_BUILD_TYPE=Release
@@ -68,10 +66,14 @@ modules:
         path: modules.txt
         type: file
       - go.mod.yml
-      - type: file
-        path: cimgui-arm64.patch
-      - type: file
-        path: cimgui-arm64-datatypes.patch
+      - type: patch
+        only-arches: [aarch64]
+        paths:
+          - patches/cimgui-arm64.patch
+          - patches/cimgui-arm64-datatypes.patch
+        options: 
+          - -d
+          - vendor/github.com/AllenDang/cimgui-go
       - type: script
         commands:
           - |
