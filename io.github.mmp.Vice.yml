@@ -29,12 +29,10 @@ modules:
     build-commands:
       - |
         if [ "$FLATPAK_ARCH" = "aarch64" ]; then
-          cd vendor/github.com/AllenDang/cimgui-go/lib
-          mkdir linux/arm64
-          cmake -Bbuild . -DCMAKE_BUILD_TYPE=Release
-          cd build
-          make -j$(nproc)
-          cp cimgui.a ../linux/arm64/cimgui.a
+          cmake -B build -S vendor/github.com/AllenDang/cimgui-go/lib -G Ninja
+          ninja -C build
+          mkdir vendor/github.com/AllenDang/cimgui-go/lib/linux/arm64
+          cp build/cimgui.a vendor/github.com/AllenDang/cimgui-go/lib/linux/arm64/cimgui.a
         fi
       - ./upstream-meta/linux/generate-manifest.sh resources cmd/vice/manifest.json
       - go build -tags "imguifreetype,downloadresources" -o vice ./cmd/vice
