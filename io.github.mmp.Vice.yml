@@ -24,6 +24,7 @@ modules:
       - type: git
         url: https://github.com/glfw/glfw.git
         tag: 3.3.10
+        commit: dc46d3f8129712e42856c20e99a604a3b08ad581
   - name: vice
     buildsystem: simple
     build-commands:
@@ -53,6 +54,7 @@ modules:
       - type: git
         url: https://github.com/mmp/vice.git
         tag: v0.13.3
+        commit: f5519243b74bbc5ed1477172a79af50fbf5a5ae2
       # TODO: remove after the next release
       - type: git
         url: https://github.com/mmp/vice.git
