@@ -14,7 +14,6 @@ finish-args:
   - --filesystem=xdg-run/app/com.discordapp.Discord:create
 modules:
   - name: glfw
-    only-arches: [aarch64]
     buildsystem: cmake-ninja
     config-opts:
       - -DGLFW_BUILD_EXAMPLES=OFF
@@ -28,13 +27,10 @@ modules:
   - name: vice
     buildsystem: simple
     build-commands:
-      - |
-        if [ "$FLATPAK_ARCH" = "aarch64" ]; then
-          cmake -B build -S vendor/github.com/AllenDang/cimgui-go/lib -G Ninja
-          ninja -C build
-          mkdir vendor/github.com/AllenDang/cimgui-go/lib/linux/arm64
-          cp build/cimgui.a vendor/github.com/AllenDang/cimgui-go/lib/linux/arm64/cimgui.a
-        fi
+      - rm vendor/github.com/AllenDang/cimgui-go/lib/linux/x64/*
+      - cmake -B build -S vendor/github.com/AllenDang/cimgui-go/lib -G Ninja 
+      - ninja -C build
+      - cp build/cimgui.a vendor/github.com/AllenDang/cimgui-go/lib/linux/cimgui.a
       - ./upstream-meta/linux/generate-manifest.sh resources cmd/vice/manifest.json
       - go build -tags "imguifreetype,downloadresources" -o vice ./cmd/vice
       - install -Dm755 vice /app/bin/vice
@@ -66,10 +62,13 @@ modules:
         type: file
       - go.mod.yml
       - type: patch
+        path: patches/cimgui-no-precompiled-libs.patch
+        options:
+          - -d
+          - vendor/github.com/AllenDang/cimgui-go
+      - type: patch
         only-arches: [aarch64]
-        paths:
-          - patches/cimgui-arm64.patch
-          - patches/cimgui-arm64-datatypes.patch
+        path: patches/cimgui-arm64-datatypes.patch
         options: 
           - -d
           - vendor/github.com/AllenDang/cimgui-go
