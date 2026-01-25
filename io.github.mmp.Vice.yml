@@ -49,8 +49,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mmp/vice.git
-        tag: v0.13.3
-        commit: 9203d8a5affe6faf38854e61cbaa4f865904af62
+        commit: 16d45e580d6e9cde046c0124e190f52afffb29b3
       # TODO: remove after the next release
       - type: git
         url: https://github.com/mmp/vice.git
