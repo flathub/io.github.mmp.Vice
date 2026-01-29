@@ -1,0 +1,12 @@
+diff --git a/modules.txt b/modules.txt
+index c8aea32..7a15130 100644
+--- a/modules.txt
++++ b/modules.txt
+@@ -49,6 +49,7 @@ cloud.google.com/go/storage/internal/apiv2/storagepb
+ # github.com/AllenDang/cimgui-go v1.3.1
+ ## explicit; go 1.24.0
+ github.com/AllenDang/cimgui-go
++github.com/AllenDang/cimgui-go/utils/datatypes
+ github.com/AllenDang/cimgui-go/cwrappers
+ github.com/AllenDang/cimgui-go/cwrappers/ImGuiColorTextEdit
+ github.com/AllenDang/cimgui-go/cwrappers/ImGuiColorTextEdit/vendor1/regex/build
