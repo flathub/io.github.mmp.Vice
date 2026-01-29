@@ -277,6 +277,11 @@
   strip-components: 4
   type: archive
   url: https://proxy.golang.org/github.com/googleapis/gax-go/v2/@v/v2.14.2.zip
+- dest: vendor/github.com/gorilla/websocket
+  sha256: dbbd31dd0f08548c5dc43e4c2f12bbba66abff5252b224b1cd06afbb72783a76
+  strip-components: 3
+  type: archive
+  url: https://proxy.golang.org/github.com/gorilla/websocket/@v/v1.5.3.zip
 - dest: vendor/github.com/josephspurrier/goversioninfo
   sha256: 5e5d8c1aced1a6f36fdbbb83471c545a4bcc6c9b5ea71aa48f251da16bb96499
   strip-components: 3
