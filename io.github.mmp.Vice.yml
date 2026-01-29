@@ -71,6 +71,12 @@ modules:
         options: 
           - -d
           - vendor/github.com/AllenDang/cimgui-go
+      - type: patch
+        only-arches: [aarch64]
+        path: patches/cimgui-arm64-modules.patch
+        options:
+          - -d
+          - vendor
       - type: script
         commands:
           - |
