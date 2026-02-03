@@ -49,7 +49,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mmp/vice.git
-        commit: 9ff3ba8838c575fc84ae763023c711bc4884f629
+        commit: e92c67836eb0ea2ee6059aedde606cfbdf369749
       - type: file
         url: https://storage.googleapis.com/vice-resources/5125f0232e2ad85e9101173a69691d10884899d881b636af7376a34aaf36b702
         sha256: 5125f0232e2ad85e9101173a69691d10884899d881b636af7376a34aaf36b702
