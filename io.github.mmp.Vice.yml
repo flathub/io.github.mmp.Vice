@@ -24,6 +24,13 @@ modules:
         url: https://github.com/glfw/glfw.git
         tag: 3.3.10
         commit: dc46d3f8129712e42856c20e99a604a3b08ad581
+  - name: sherpa-onnx
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/k2-fsa/sherpa-onnx.git
+        tag: v1.12.22
+        commit: 69e79f5910d4461619680eea0b07e378927ff3fe
   - name: vice
     buildsystem: simple
     build-commands:
