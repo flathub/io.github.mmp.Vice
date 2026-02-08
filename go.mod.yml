@@ -22,6 +22,11 @@
   strip-components: 3
   type: archive
   url: https://proxy.golang.org/github.com/brunoga/deep/@v/v1.2.3.zip
+- dest: vendor/github.com/gdamore/tcell/v2
+  sha256: 0681b6dae603a00df4c9d7dc9f0e3a7e57b426e7909ae96cf92431be54df2dc7
+  strip-components: 4
+  type: archive
+  url: https://proxy.golang.org/github.com/gdamore/tcell/v2/@v/v2.13.7.zip
 - dest: vendor/github.com/go-gl/gl
   sha256: 25f3f14188565565b95bef7b955e1c6e0d06bccb90b2c598a078e9c73b6f66dd
   strip-components: 3
@@ -37,6 +42,11 @@
   strip-components: 3
   type: archive
   url: https://proxy.golang.org/github.com/goforj/godump/@v/v1.9.0.zip
+- dest: vendor/github.com/gorilla/websocket
+  sha256: dbbd31dd0f08548c5dc43e4c2f12bbba66abff5252b224b1cd06afbb72783a76
+  strip-components: 3
+  type: archive
+  url: https://proxy.golang.org/github.com/gorilla/websocket/@v/v1.5.3.zip
 - dest: vendor/github.com/hashicorp/golang-lru/v2
   sha256: 2eb92ff13970bccd460efae14255bfc03bb51474da0137e477a60f95561acc30
   strip-components: 4
@@ -52,6 +62,11 @@
   strip-components: 3
   type: archive
   url: https://proxy.golang.org/github.com/iancoleman/orderedmap/@v/v0.3.0.zip
+- dest: vendor/github.com/k2-fsa/sherpa-onnx-go
+  sha256: e810b53ac33a35d6f5ab4b4fb965fe12055d13088df1911b09bdb39646a4e795
+  strip-components: 3
+  type: archive
+  url: https://proxy.golang.org/github.com/k2-fsa/sherpa-onnx-go/@v/v1.12.22.zip
 - dest: vendor/github.com/klauspost/compress
   sha256: c91cc38ea41996aff5e132666674c63c65f6c7d8af1b3eac4a142b323bf96779
   strip-components: 3
@@ -232,11 +247,6 @@
   strip-components: 3
   type: archive
   url: https://proxy.golang.org/github.com/gdamore/encoding/@v/v1.0.1.zip
-- dest: vendor/github.com/gdamore/tcell/v2
-  sha256: 0681b6dae603a00df4c9d7dc9f0e3a7e57b426e7909ae96cf92431be54df2dc7
-  strip-components: 4
-  type: archive
-  url: https://proxy.golang.org/github.com/gdamore/tcell/v2/@v/v2.13.7.zip
 - dest: vendor/github.com/go-jose/go-jose/v4
   sha256: 7bb0205c235a4bc2bbca729a08d2d86f31ac0199cfc1c70b2d780f7594366407
   strip-components: 4
@@ -277,16 +287,26 @@
   strip-components: 4
   type: archive
   url: https://proxy.golang.org/github.com/googleapis/gax-go/v2/@v/v2.14.2.zip
-- dest: vendor/github.com/gorilla/websocket
-  sha256: dbbd31dd0f08548c5dc43e4c2f12bbba66abff5252b224b1cd06afbb72783a76
-  strip-components: 3
-  type: archive
-  url: https://proxy.golang.org/github.com/gorilla/websocket/@v/v1.5.3.zip
 - dest: vendor/github.com/josephspurrier/goversioninfo
   sha256: 5e5d8c1aced1a6f36fdbbb83471c545a4bcc6c9b5ea71aa48f251da16bb96499
   strip-components: 3
   type: archive
   url: https://proxy.golang.org/github.com/josephspurrier/goversioninfo/@v/v1.4.1.zip
+- dest: vendor/github.com/k2-fsa/sherpa-onnx-go-linux
+  sha256: 62d816d9af6f96634f562149d440f1d42fcc4eefd1bdea52373e71bae8ed6def
+  strip-components: 3
+  type: archive
+  url: https://proxy.golang.org/github.com/k2-fsa/sherpa-onnx-go-linux/@v/v1.12.22.zip
+- dest: vendor/github.com/k2-fsa/sherpa-onnx-go-macos
+  sha256: b7e70e078753b0986875d5517a7384d39ee271c9e4b7cb1a4c7ecced884a44ad
+  strip-components: 3
+  type: archive
+  url: https://proxy.golang.org/github.com/k2-fsa/sherpa-onnx-go-macos/@v/v1.12.22.zip
+- dest: vendor/github.com/k2-fsa/sherpa-onnx-go-windows
+  sha256: 87854540e5bfbfa23d687cfbcac7979c6589c75277e7c9754596e0fef84b3a28
+  strip-components: 3
+  type: archive
+  url: https://proxy.golang.org/github.com/k2-fsa/sherpa-onnx-go-windows/@v/v1.12.22.zip
 - dest: vendor/github.com/lucasb-eyer/go-colorful
   sha256: 9c7c8ac20d1b2ffe1b43956e6be94c979d9d42f2ecc182d1bbb2c91f11647c15
   strip-components: 3
