@@ -38,6 +38,13 @@ modules:
           - https://hf-mirror.com/csukuangfj/sherpa-ncnn-cmake-deps/resolve/main/kaldi-native-fbank-1.22.3.tar.gz
         sha256: 9176cc66fc7ce1edf85cf355b06e320c57db6297df74277f575183468893cf61
         dest-filename: kaldi-native-fbank-1.22.3.tar.gz
+      - type: archive
+        url: https://github.com/pybind/pybind11/archive/refs/tags/v3.0.0.tar.gz
+        mirror-urls:
+          - https://hf-mirror.com/csukuangfj/sherpa-onnx-cmake-deps/resolve/main/pybind11-3.0.0.tar.gz
+        sha256: 453b1a3e2b266c3ae9da872411cadb6d693ac18063bd73226d96cfb7015a200c
+        dest-filename: pybind11-3.0.0.tar.gz
+
   - name: vice
     buildsystem: simple
     build-commands:
