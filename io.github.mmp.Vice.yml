@@ -266,9 +266,6 @@ modules:
         path: modules.txt
         type: file
       - go.mod.yml
-      # remove after the next release, it missed the 0.14.0 tag
-      - type: patch
-        path: patches/vice-appstream.patch
       - type: patch
         path: patches/cimgui-no-precompiled-libs.patch
         options:
