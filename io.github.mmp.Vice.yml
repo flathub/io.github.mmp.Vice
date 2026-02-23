@@ -80,7 +80,6 @@ modules:
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-    config-opts:
       - -DCPUINFO_BUILD_UNIT_TESTS=OFF
       - -DCPUINFO_BUILD_MOCK_TESTS=OFF
       - -DCPUINFO_BUILD_BENCHMARKS=OFF
