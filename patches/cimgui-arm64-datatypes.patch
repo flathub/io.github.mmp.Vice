@@ -1,16 +1,3 @@
-diff --git a/cmd/codegen/return_wrapper.go b/cmd/codegen/return_wrapper.go
-index 8fa1b62d..93a08aa0 100644
---- a/cmd/codegen/return_wrapper.go
-+++ b/cmd/codegen/return_wrapper.go
-@@ -129,7 +129,7 @@ func getReturnWrapper(
- 
- 		// NOTE: Special Case
- 		if pureType == "char*" {
--			rw = simplePtrR("int8", "C.char")
-+			rw = simplePtrR("datatypes.Char", "C.char")
- 		}
- 
- 		if isPointer {
 diff --git a/imgui/funcs.go b/imgui/funcs.go
 index 98bb1d24..706f4d6d 100644
 --- a/imgui/funcs.go
