@@ -134,7 +134,7 @@ index f2129bc7..5026d548 100644
  // WrapString converts Go string to C char*
  // Default value of RET is C.char
 -func WrapString[RET ~int8](value string) (wrapped *RET, finisher func()) {
-+func WrapString[RET ~Char](value string) (wrapped *RET, finisher func()) {
++func WrapString[RET Char](value string) (wrapped *RET, finisher func()) {
  	wrapped = ReinterpretCast[*RET](C.CString(value))
  	finisher = func() { C.free(unsafe.Pointer(wrapped)) } // nolint: gas
  	return
@@ -143,7 +143,7 @@ index f2129bc7..5026d548 100644
  // WrapStringList converts Go string slice to C char**
  // Default value of RET is C.char
 -func WrapStringList[RET ~int8](value []string) (wrapped **RET, finisher func()) {
-+func WrapStringList[RET ~Char](value []string) (wrapped **RET, finisher func()) {
++func WrapStringList[RET Char](value []string) (wrapped **RET, finisher func()) {
  	if len(value) == 0 {
  		return nil, func() {}
  	}
