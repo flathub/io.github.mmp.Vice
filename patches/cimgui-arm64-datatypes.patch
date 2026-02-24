@@ -147,3 +147,29 @@ index f2129bc7..5026d548 100644
  	if len(value) == 0 {
  		return nil, func() {}
  	}
+diff --git a/utils/datatypes/char_signed.go b/utils/datatypes/char_signed.go
+new file mode 100644
+index 00000000..45fe6d5b
+--- /dev/null
++++ b/utils/datatypes/char_signed.go
+@@ -0,0 +1,7 @@
++//go:build amd64 || (arm64 && darwin)
++
++package datatypes
++
++// Char represents underlying type of C.char. On amd64 it is equivalent to int8, on arm64 it is uint8.
++// See https://github.com/AllenDang/cimgui-go/issues/140
++type Char int8
+diff --git a/utils/datatypes/char_unsigned.go b/utils/datatypes/char_unsigned.go
+new file mode 100644
+index 00000000..3bb2f1c6
+--- /dev/null
++++ b/utils/datatypes/char_unsigned.go
+@@ -0,0 +1,7 @@
++//go:build arm64 && !darwin
++
++package datatypes
++
++// Char represents underlying type of C.char. On amd64 it is equivalent to int8, on arm64 it is uint8.
++// See https://github.com/AllenDang/cimgui-go/issues/140
++type Char uint8
