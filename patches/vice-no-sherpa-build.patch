@@ -1,0 +1,15 @@
+diff --git a/build.sh b/build.sh
+index cc562b26..92e0c039 100755
+--- a/build.sh
++++ b/build.sh
+@@ -489,10 +489,6 @@ if needs_whisper_build; then
+     build_whisper
+ fi
+ 
+-if needs_sherpa_build; then
+-    build_sherpa
+-fi
+-
+ if [ "$DO_CHECK" = true ]; then
+     run_checks
+ fi
