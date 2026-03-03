@@ -488,20 +488,20 @@
   type: archive
   url: https://proxy.golang.org/go.opentelemetry.io/otel/trace/@v/v1.35.0.zip
 - dest: vendor/golang.org/x/crypto
-  sha256: 02824dd62fa3241946a2ac14fdadbd393514d76cebbfbd8bddcddbfc80c7f94b
+  sha256: 416335b9102df16747b29fe58d034d6d9fb70af314740136fb0a37ae8c568705
   strip-components: 3
   type: archive
-  url: https://proxy.golang.org/golang.org/x/crypto/@v/v0.38.0.zip
+  url: https://proxy.golang.org/golang.org/x/crypto/@v/v0.45.0.zip
 - dest: vendor/golang.org/x/image
   sha256: 1f0f48daa679986db28876cef4074ff192fb705fcdc537627903270375bf6971
   strip-components: 3
   type: archive
   url: https://proxy.golang.org/golang.org/x/image/@v/v0.20.0.zip
 - dest: vendor/golang.org/x/net
-  sha256: 388e4a624f48990057f1a2a2cc5f3e0f81e41b99dd2036247d98c931c59d44d4
+  sha256: 3444c04eff1dc7a41a6386cb6a0b0b1facebfc7e222bae523043ed4b14039f76
   strip-components: 3
   type: archive
-  url: https://proxy.golang.org/golang.org/x/net/@v/v0.40.0.zip
+  url: https://proxy.golang.org/golang.org/x/net/@v/v0.47.0.zip
 - dest: vendor/golang.org/x/term
   sha256: ffd8a74e9a9fd13e1080fa4e8f807693e438fda98f336992cb2a2420d2e95e61
   strip-components: 3
