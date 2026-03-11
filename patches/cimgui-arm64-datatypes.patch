@@ -1,5 +1,5 @@
 diff --git a/imgui/funcs.go b/imgui/funcs.go
-index 5683b866..305dff96 100644
+index 98bb1d24..706f4d6d 100644
 --- a/imgui/funcs.go
 +++ b/imgui/funcs.go
 @@ -11,6 +11,7 @@ import (
@@ -10,8 +10,8 @@ index 5683b866..305dff96 100644
  	"github.com/AllenDang/cimgui-go/utils/vectors"
  )
  
-@@ -20640,13 +20641,13 @@ func (self Context) SetClipboardHandlerData(v vectors.Vector[int8]) {
- 	C.wrap_ImGuiContext_SetClipboardHandlerData(selfArg, *vVecArg)
+@@ -23089,13 +23090,13 @@ func (self *Context) TooltipPreviousWindow() *Window {
+ 	return NewWindowFromC(C.wrap_ImGuiContext_GetTooltipPreviousWindow(internal.ReinterpretCast[*C.ImGuiContext](selfArg)))
  }
  
 -func (self *Context) ClipboardHandlerData() vectors.Vector[int8] {
@@ -25,9 +25,9 @@ index 5683b866..305dff96 100644
 +	return vectors.NewVectorFromC(C.wrap_ImGuiContext_GetClipboardHandlerData(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Size, C.wrap_ImGuiContext_GetClipboardHandlerData(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiContext_GetClipboardHandlerData(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Data))
  }
  
- func (self Context) SetMenusIdSubmittedThisFrame(v vectors.Vector[ID]) {
-@@ -21676,13 +21677,13 @@ func (self Context) SetTempBuffer(v vectors.Vector[int8]) {
- 	C.wrap_ImGuiContext_SetTempBuffer(selfArg, *vVecArg)
+ func (self *Context) MenusIdSubmittedThisFrame() vectors.Vector[ID] {
+@@ -23674,13 +23675,13 @@ func (self *Context) WantTextInputNextFrame() int32 {
+ 	return int32(C.wrap_ImGuiContext_GetWantTextInputNextFrame(internal.ReinterpretCast[*C.ImGuiContext](selfArg)))
  }
  
 -func (self *Context) TempBuffer() vectors.Vector[int8] {
@@ -41,9 +41,9 @@ index 5683b866..305dff96 100644
 +	return vectors.NewVectorFromC(C.wrap_ImGuiContext_GetTempBuffer(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Size, C.wrap_ImGuiContext_GetTempBuffer(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiContext_GetTempBuffer(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Data))
  }
  
- func (self Context) SetTempKeychordName(v *[64]rune) {
-@@ -25849,13 +25850,13 @@ func (self InputTextDeactivatedState) SetTextA(v vectors.Vector[int8]) {
- 	C.wrap_ImGuiInputTextDeactivatedState_SetTextA(selfArg, *vVecArg)
+ func (self *Context) TempKeychordName() [64]rune {
+@@ -27938,13 +27939,13 @@ func (self *InputTextDeactivatedState) ID() ID {
+ 	return *NewIDFromC(func() *C.ImGuiID { result := result; return &result }())
  }
  
 -func (self *InputTextDeactivatedState) TextA() vectors.Vector[int8] {
@@ -58,8 +58,8 @@ index 5683b866..305dff96 100644
  }
  
  func (self InputTextState) SetCtx(v *Context) {
-@@ -25955,13 +25956,13 @@ func (self InputTextState) SetTextA(v vectors.Vector[int8]) {
- 	C.wrap_ImGuiInputTextState_SetTextA(selfArg, *vVecArg)
+@@ -28150,31 +28151,31 @@ func (self *InputTextState) TextSrc() string {
+ 	return C.GoString(C.wrap_ImGuiInputTextState_GetTextSrc(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)))
  }
  
 -func (self *InputTextState) TextA() vectors.Vector[int8] {
@@ -73,11 +73,6 @@ index 5683b866..305dff96 100644
 +	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Size, C.wrap_ImGuiInputTextState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiInputTextState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Data))
  }
  
- func (self InputTextState) SetTextToRevertTo(v vectors.Vector[int8]) {
-@@ -25978,13 +25979,13 @@ func (self InputTextState) SetTextToRevertTo(v vectors.Vector[int8]) {
- 	C.wrap_ImGuiInputTextState_SetTextToRevertTo(selfArg, *vVecArg)
- }
- 
 -func (self *InputTextState) TextToRevertTo() vectors.Vector[int8] {
 +func (self *InputTextState) TextToRevertTo() vectors.Vector[datatypes.Char] {
  	selfArg, selfFin := self.Handle()
@@ -87,11 +82,6 @@ index 5683b866..305dff96 100644
  	}()
 -	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Size, C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Capacity, (*int8)(C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Data))
 +	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Size, C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Data))
- }
- 
- func (self InputTextState) SetCallbackTextBackup(v vectors.Vector[int8]) {
-@@ -26001,13 +26002,13 @@ func (self InputTextState) SetCallbackTextBackup(v vectors.Vector[int8]) {
- 	C.wrap_ImGuiInputTextState_SetCallbackTextBackup(selfArg, *vVecArg)
  }
  
 -func (self *InputTextState) CallbackTextBackup() vectors.Vector[int8] {
@@ -105,8 +95,8 @@ index 5683b866..305dff96 100644
 +	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextState_GetCallbackTextBackup(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Size, C.wrap_ImGuiInputTextState_GetCallbackTextBackup(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiInputTextState_GetCallbackTextBackup(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Data))
  }
  
- func (self InputTextState) SetBufCapacity(v int32) {
-@@ -34936,13 +34937,13 @@ func (self TextBuffer) SetBuf(v vectors.Vector[int8]) {
+ func (self *InputTextState) BufCapacity() int32 {
+@@ -37405,13 +37406,13 @@ func (self TextBuffer) SetBuf(v vectors.Vector[int8]) {
  	C.wrap_ImGuiTextBuffer_SetBuf(selfArg, *vVecArg)
  }
  
@@ -123,7 +113,7 @@ index 5683b866..305dff96 100644
  
  func (self TextFilter) SetInputBuf(v *[256]rune) {
 diff --git a/internal/type_wrapper.go b/internal/type_wrapper.go
-index f2129bc7..850bb4dd 100644
+index f2129bc7..5026d548 100644
 --- a/internal/type_wrapper.go
 +++ b/internal/type_wrapper.go
 @@ -8,6 +8,12 @@ import (
@@ -183,4 +173,3 @@ index 00000000..3bb2f1c6
 +// Char represents underlying type of C.char. On amd64 it is equivalent to int8, on arm64 it is uint8.
 +// See https://github.com/AllenDang/cimgui-go/issues/140
 +type Char uint8
-
