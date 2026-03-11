@@ -1,6 +1,6 @@
 id: io.github.mmp.Vice
 runtime: org.freedesktop.Platform
-runtime-version: '25.08'
+runtime-version: "25.08"
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.golang
@@ -24,14 +24,223 @@ modules:
         url: https://github.com/glfw/glfw.git
         tag: 3.3.10
         commit: dc46d3f8129712e42856c20e99a604a3b08ad581
+
+  - name: abseil-cpp
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+    sources:
+      - type: git
+        url: https://github.com/abseil/abseil-cpp.git
+        tag: 20250512.1
+        commit: 76bb24329e8bf5f39704eb10d21b9a80befa7c81
+  - name: re2
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+    sources:
+      - type: git
+        url: https://github.com/google/re2.git
+        tag: 2024-07-02
+        commit: 6dcd83d60f7944926bfd308cc13979fc53dd69ca
+  - name: protobuf
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+    sources:
+      - type: git
+        url: https://github.com/protocolbuffers/protobuf.git
+        tag: v21.12
+        commit: f0dc78d7e6e331b8c6bb2d5283e06aa26883ca7c
+  - name: date
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/HowardHinnant/date.git
+        tag: v3.0.1
+        commit: 6e921e1b1d21e84a5c82416ba7ecd98e33a436d0
+  - name: boost
+    buildsystem: simple
+    build-commands:
+      - ./bootstrap.sh --prefix=${FLATPAK_DEST}
+      - ./b2 headers
+      - cp -r boost /app/include
+    sources:
+      - type: archive
+        url: https://archives.boost.io/release/1.82.0/source/boost_1_82_0.tar.bz2
+        sha256: a6e1ab9b0860e6a2881dd7b21fe9f737a095e5f33a3a874afc6a345228597ee6
+  - name: nlohmann_json
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/nlohmann/json.git
+        tag: v3.11.3
+        commit: 9cca280a4d0ccf0c08f47a99aa71d1b0e52f8d03
+  - name: cpuinfo
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+      - -DCPUINFO_BUILD_UNIT_TESTS=OFF
+      - -DCPUINFO_BUILD_MOCK_TESTS=OFF
+      - -DCPUINFO_BUILD_BENCHMARKS=OFF
+    sources:
+      - type: git
+        url: https://github.com/pytorch/cpuinfo.git
+        commit: 403d652dca4c1046e8145950b1c0997a9f748b57
+  - name: gsl
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+      - -DGSL_TEST=OFF
+    sources:
+      - type: git
+        url: https://github.com/microsoft/GSL.git
+        tag: v4.0.0
+        commit: a3534567187d2edc428efd3f13466ff75fe5805c
+  - name: safeint
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 SafeInt.hpp /app/include/SafeInt.hpp
+      - install -Dm644 safe_math.h /app/include/safe_math.h
+      - install -Dm644 safe_math_impl.h /app/include/safe_math_impl.h
+    sources:
+      - type: git
+        url: https://github.com/dcleblanc/SafeInt.git
+        tag: 3.0.28
+        commit: 4cafc9196c4da9c817992b20f5253ef967685bf8
+  - name: flatbuffers
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+    sources:
+      - type: git
+        url: https://github.com/google/flatbuffers.git
+        tag: v23.5.26
+        commit: 0100f6a5779831fa7a651e4b67ef389a8752bd9b
+  - name: onnx
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+    sources:
+      - type: git
+        url: https://github.com/onnx/onnx.git
+        tag: v1.20.1
+        commit: d3f6b795aedb48eaecc881bf5e8f5dd6efbe25b3
+  - name: eigen3
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DBUILD_TESTING=OFF
+      - -DEIGEN_BUILD_BLAS=OFF
+      - -DEIGEN_BUILD_LAPACK=OFF
+    sources:
+      - type: git
+        url: https://gitlab.com/libeigen/eigen.git
+        tag: 3.4.1
+        commit: d71c30c47858effcbd39967097a2d99ee48db464
+  - name: onnxruntime
+    buildsystem: cmake-ninja
+    subdir: cmake
+    config-opts:
+      - -DFETCHCONTENT_FULLY_DISCONNECTED=ON
+      - -Donnxruntime_BUILD_UNIT_TESTS=OFF
+      - -Donnxruntime_BUILD_SHARED_LIB=ON
+      - -Donnxruntime_USE_VCPKG=ON
+    sources:
+      - type: git
+        url: https://github.com/microsoft/onnxruntime.git
+        tag: v1.23.2
+        commit: a83fc4d58cb48eb68890dd689f94f28288cf2278
+      - type: patch
+        path: patches/onnxruntime-cstdint.patch
+      - type: patch
+        path: patches/onnxruntime-range-loop.patch
+  - name: sherpa-onnx
+    buildsystem: cmake-ninja
+    builddir: true
+    build-options:
+      env:
+        SHERPA_ONNXRUNTIME_INCLUDE_DIR: /app/include/onnxruntime
+        SHERPA_ONNXRUNTIME_LIB_DIR: /app/lib
+    config-opts:
+      - -DBUILD_SHARED_LIBS=OFF
+      #- -DFETCHCONTENT_FULLY_DISCONNECTED=ON
+      - -DSHERPA_ONNX_ENABLE_BINARY=OFF
+      - -DSHERPA_ONNX_ENABLE_TTS=ON
+      - -DSHERPA_ONNX_ENABLE_CHECK=OFF
+      - -DSHERPA_ONNX_ENABLE_WEBSOCKET=OFF
+      - -DSHERPA_ONNX_ENABLE_PORTAUDIO=OFF
+      - -DSHERPA_ONNX_ENABLE_TESTS=OFF
+      - -DSHERPA_ONNX_ENABLE_SPEAKER_DIARIZATION=OFF
+      - -DSHERPA_ONNX_BUILD_C_API_EXAMPLES=OFF
+    sources:
+      - type: git
+        url: https://github.com/mmp/sherpa-onnx
+        commit: 8dcca037bb73880c4fcb231a9c41740189e95e7c
+      - type: file
+        url: https://github.com/csukuangfj/kaldi-native-fbank/archive/refs/tags/v1.22.3.tar.gz
+        mirror-urls:
+          - https://hf-mirror.com/csukuangfj/sherpa-ncnn-cmake-deps/resolve/main/kaldi-native-fbank-1.22.3.tar.gz
+        sha256: 9176cc66fc7ce1edf85cf355b06e320c57db6297df74277f575183468893cf61
+        dest-filename: kaldi-native-fbank-1.22.3.tar.gz
+      - type: file
+        url: https://github.com/k2-fsa/kaldi-decoder/archive/refs/tags/v0.2.11.tar.gz
+        sha256: 85ca462535592541eb5ba6d21843009cf34738f51b28b71f84882a3694b528bf
+        dest-filename: kaldi-decoder-0.2.11.tar.gz
+      - type: file
+        url: https://github.com/mborgerding/kissfft/archive/febd4caeed32e33ad8b2e0bb5ea77542c40f18ec.zip
+        sha256: 497103e664168ebe39580b757adbe616f6cf85a16572af581ca7bc42d0ab13fd
+        dest-filename: kissfft-febd4caeed32e33ad8b2e0bb5ea77542c40f18ec.zip
+      - type: file
+        url: https://github.com/k2-fsa/kaldifst/archive/refs/tags/v1.7.17.tar.gz
+        mirror-urls:
+          - https://hf-mirror.com/csukuangfj/sherpa-onnx-cmake-deps/resolve/main/kaldifst-1.7.17.tar.gz
+        sha256: c4b701a23a400bda8032586b02c7e0d5e813a765832df60c23e6df9e62b010f4
+        dest-filename: kaldifst-1.7.17.tar.gz
+      - type: file
+        url: https://github.com/csukuangfj/openfst/archive/refs/tags/sherpa-onnx-2024-06-19.tar.gz
+        mirror-urls:
+          - https://hf-mirror.com/csukuangfj/sherpa-onnx-cmake-deps/resolve/main/openfst-sherpa-onnx-2024-06-19.tar.gz
+        sha256: 5c98e82cc509c5618502dde4860b8ea04d843850ed57e6d6b590b644b268853d
+        dest-filename: openfst-sherpa-onnx-2024-06-19.tar.gz
+      - type: file
+        url: https://gitlab.com/libeigen/eigen/-/archive/3.4.1/eigen-3.4.1.tar.gz
+        mirror-urls:
+          - https://hf-mirror.com/csukuangfj/sherpa-onnx-cmake-deps/resolve/main/eigen-3.4.1.tar.gz
+        sha256: b93c667d1b69265cdb4d9f30ec21f8facbbe8b307cf34c0b9942834c6d4fdbe2
+        dest-filename: eigen-3.4.1.tar.gz
+      - type: file
+        url: https://github.com/pkufool/simple-sentencepiece/archive/refs/tags/v0.7.tar.gz
+        mirror-urls:
+          - https://hf-mirror.com/csukuangfj/sherpa-onnx-cmake-deps/resolve/main/simple-sentencepiece-0.7.tar.gz
+        sha256: 1748a822060a35baa9f6609f84efc8eb54dc0e74b9ece3d82367b7119fdc75af
+        dest-filename: simple-sentencepiece-0.7.tar.gz
+      - type: file
+        url: https://github.com/nlohmann/json/archive/refs/tags/v3.12.0.tar.gz
+        mirror-urls:
+          - https://hf-mirror.com/csukuangfj/sherpa-onnx-cmake-deps/resolve/main/json-3.12.0.tar.gz
+        sha256: 4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187
+        dest-filename: json-3.12.0.tar.gz
+      - type: file
+        url: https://github.com/csukuangfj/espeak-ng/archive/f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip
+        mirror-urls:
+          - https://hf-mirror.com/csukuangfj/sherpa-onnx-cmake-deps/resolve/main/espeak-ng-f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip
+        sha256: 70cbf4050e7a014aae19140b05e57249da4720f56128459fbe3a93beaf971ae6
+        dest-filename: espeak-ng-f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip
+      - type: file
+        url: https://github.com/csukuangfj/piper-phonemize/archive/78a788e0b719013401572d70fef372e77bff8e43.zip
+        mirror-urls:
+          - https://hf-mirror.com/csukuangfj/sherpa-onnx-cmake-deps/resolve/main/piper-phonemize-78a788e0b719013401572d70fef372e77bff8e43.zip
+        sha256: 89641a46489a4898754643ce57bda9c9b54b4ca46485fdc02bf0dc84b866645d
+        dest-filename: piper-phonemize-78a788e0b719013401572d70fef372e77bff8e43.zip
   - name: vice
     buildsystem: simple
     build-commands:
       - rm vendor/github.com/AllenDang/cimgui-go/lib/linux/x64/*
-      - cmake -B build -S vendor/github.com/AllenDang/cimgui-go/lib -G Ninja 
+      - cmake -B build -S vendor/github.com/AllenDang/cimgui-go/lib -G Ninja
       - ninja -C build
       - cp build/cimgui.a vendor/github.com/AllenDang/cimgui-go/lib/linux/cimgui.a
-      - ./linux/generate-manifest.sh resources cmd/vice/manifest.json
+      - go run ./cmd/bundleresources/bundleresources.go --no-upload && mv manifest.json cmd/vice/manifest.json
       - ./build.sh --release --vulkan
       - install -Dm755 vice /app/bin/vice
       - mkdir -p /app/bin/fonts && cp -r fonts/*.zst /app/bin/fonts
@@ -46,18 +255,18 @@ modules:
       append-path: /usr/lib/sdk/golang/bin
       env:
         GOFLAGS: "-mod=vendor"
+        CGO_LDFLAGS: "-L/app/lib"
     sources:
       - type: git
         url: https://github.com/mmp/vice.git
-        tag: v0.14.0
-        commit: ec8d22cf2dda85990c8a326d9efe46c31ec777dc
+        tag: v0.14.1
+        commit: 85f70d82e42baf69fdf8f75b9a27fc8c78f1c49d
       - vice-resources.yaml
       # Workaround for Go modules generated by github.com/dennwc/flatpak-go-mod
       - dest: vendor
         path: modules.txt
         type: file
       - go.mod.yml
-      # remove after the next release, it missed the 0.14.0 tag
       - type: patch
         path: patches/vice-appstream.patch
       - type: patch
@@ -66,9 +275,13 @@ modules:
           - -d
           - vendor/github.com/AllenDang/cimgui-go
       - type: patch
+        path: patches/vice-no-sherpa-build.patch
+      - type: patch
+        path: patches/vice-tts.patch
+      - type: patch
         only-arches: [aarch64]
         path: patches/cimgui-arm64-datatypes.patch
-        options: 
+        options:
           - -d
           - vendor/github.com/AllenDang/cimgui-go
       - type: patch
