@@ -236,10 +236,10 @@ modules:
   - name: vice
     buildsystem: simple
     build-commands:
-      - rm vendor/github.com/mmp/cimgui-go/lib/linux/x64/*
-      - cmake -B build -S vendor/github.com/mmp/cimgui-go/lib -G Ninja
+      - rm vendor/github.com/AllenDang/cimgui-go/lib/linux/x64/*
+      - cmake -B build -S vendor/github.com/AllenDang/cimgui-go/lib -G Ninja
       - ninja -C build
-      - cp build/cimgui.a vendor/github.com/mmp/cimgui-go/lib/linux/cimgui.a
+      - cp build/cimgui.a vendor/github.com/AllenDang/cimgui-go/lib/linux/cimgui.a
       - go run ./cmd/bundleresources/bundleresources.go --no-upload && mv manifest.json cmd/vice/manifest.json
       - ./build.sh --release --vulkan
       - install -Dm755 vice /app/bin/vice
@@ -271,7 +271,7 @@ modules:
         path: patches/cimgui-no-precompiled-libs.patch
         options:
           - -d
-          - vendor/github.com/mmp/cimgui-go
+          - vendor/github.com/AllenDang/cimgui-go
       - type: patch
         path: patches/vice-no-sherpa-build.patch
       - type: patch
@@ -281,7 +281,7 @@ modules:
         path: patches/cimgui-arm64-datatypes.patch
         options:
           - -d
-          - vendor/github.com/mmp/cimgui-go
+          - vendor/github.com/AllenDang/cimgui-go
       - type: patch
         only-arches: [aarch64]
         path: patches/cimgui-arm64-modules.patch
