@@ -1,5 +1,5 @@
 diff --git a/imgui/funcs.go b/imgui/funcs.go
-index 98bb1d24..706f4d6d 100644
+index a932c0ee..182dac0f 100644
 --- a/imgui/funcs.go
 +++ b/imgui/funcs.go
 @@ -11,6 +11,7 @@ import (
@@ -10,7 +10,7 @@ index 98bb1d24..706f4d6d 100644
  	"github.com/AllenDang/cimgui-go/utils/vectors"
  )
  
-@@ -23089,13 +23090,13 @@ func (self *Context) TooltipPreviousWindow() *Window {
+@@ -23459,15 +23460,15 @@ func (self *Context) TooltipPreviousWindow() *Window {
  	return NewWindowFromC(C.wrap_ImGuiContext_GetTooltipPreviousWindow(internal.ReinterpretCast[*C.ImGuiContext](selfArg)))
  }
  
@@ -21,12 +21,15 @@ index 98bb1d24..706f4d6d 100644
  	defer func() {
  		selfFin()
  	}()
--	return vectors.NewVectorFromC(C.wrap_ImGuiContext_GetClipboardHandlerData(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Size, C.wrap_ImGuiContext_GetClipboardHandlerData(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Capacity, (*int8)(C.wrap_ImGuiContext_GetClipboardHandlerData(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Data))
-+	return vectors.NewVectorFromC(C.wrap_ImGuiContext_GetClipboardHandlerData(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Size, C.wrap_ImGuiContext_GetClipboardHandlerData(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiContext_GetClipboardHandlerData(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Data))
+-	return func() vectors.Vector[int8] {
++	return func() vectors.Vector[datatypes.Char] {
+ 		result := C.wrap_ImGuiContext_GetClipboardHandlerData(internal.ReinterpretCast[*C.ImGuiContext](selfArg))
+-		return vectors.NewVectorFromC(result.Size, result.Capacity, (*int8)(result.Data))
++		return vectors.NewVectorFromC(result.Size, result.Capacity, (*datatypes.Char)(result.Data))
+ 	}()
  }
  
- func (self *Context) MenusIdSubmittedThisFrame() vectors.Vector[ID] {
-@@ -23674,13 +23675,13 @@ func (self *Context) WantTextInputNextFrame() int32 {
+@@ -24081,15 +24082,15 @@ func (self *Context) WantTextInputNextFrame() int32 {
  	return int32(C.wrap_ImGuiContext_GetWantTextInputNextFrame(internal.ReinterpretCast[*C.ImGuiContext](selfArg)))
  }
  
@@ -37,12 +40,15 @@ index 98bb1d24..706f4d6d 100644
  	defer func() {
  		selfFin()
  	}()
--	return vectors.NewVectorFromC(C.wrap_ImGuiContext_GetTempBuffer(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Size, C.wrap_ImGuiContext_GetTempBuffer(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Capacity, (*int8)(C.wrap_ImGuiContext_GetTempBuffer(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Data))
-+	return vectors.NewVectorFromC(C.wrap_ImGuiContext_GetTempBuffer(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Size, C.wrap_ImGuiContext_GetTempBuffer(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiContext_GetTempBuffer(internal.ReinterpretCast[*C.ImGuiContext](selfArg)).Data))
+-	return func() vectors.Vector[int8] {
++	return func() vectors.Vector[datatypes.Char] {
+ 		result := C.wrap_ImGuiContext_GetTempBuffer(internal.ReinterpretCast[*C.ImGuiContext](selfArg))
+-		return vectors.NewVectorFromC(result.Size, result.Capacity, (*int8)(result.Data))
++		return vectors.NewVectorFromC(result.Size, result.Capacity, (*datatypes.Char)(result.Data))
+ 	}()
  }
  
- func (self *Context) TempKeychordName() [64]rune {
-@@ -27938,13 +27939,13 @@ func (self *InputTextDeactivatedState) ID() ID {
+@@ -28442,15 +28443,15 @@ func (self *InputTextDeactivatedState) ID() ID {
  	return *NewIDFromC(func() *C.ImGuiID { result := result; return &result }())
  }
  
@@ -53,12 +59,15 @@ index 98bb1d24..706f4d6d 100644
  	defer func() {
  		selfFin()
  	}()
--	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextDeactivatedState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextDeactivatedState](selfArg)).Size, C.wrap_ImGuiInputTextDeactivatedState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextDeactivatedState](selfArg)).Capacity, (*int8)(C.wrap_ImGuiInputTextDeactivatedState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextDeactivatedState](selfArg)).Data))
-+	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextDeactivatedState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextDeactivatedState](selfArg)).Size, C.wrap_ImGuiInputTextDeactivatedState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextDeactivatedState](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiInputTextDeactivatedState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextDeactivatedState](selfArg)).Data))
+-	return func() vectors.Vector[int8] {
++	return func() vectors.Vector[datatypes.Char] {
+ 		result := C.wrap_ImGuiInputTextDeactivatedState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextDeactivatedState](selfArg))
+-		return vectors.NewVectorFromC(result.Size, result.Capacity, (*int8)(result.Data))
++		return vectors.NewVectorFromC(result.Size, result.Capacity, (*datatypes.Char)(result.Data))
+ 	}()
  }
  
- func (self InputTextState) SetCtx(v *Context) {
-@@ -28150,31 +28151,31 @@ func (self *InputTextState) TextSrc() string {
+@@ -28663,39 +28664,39 @@ func (self *InputTextState) TextSrc() string {
  	return C.GoString(C.wrap_ImGuiInputTextState_GetTextSrc(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)))
  }
  
@@ -69,8 +78,12 @@ index 98bb1d24..706f4d6d 100644
  	defer func() {
  		selfFin()
  	}()
--	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Size, C.wrap_ImGuiInputTextState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Capacity, (*int8)(C.wrap_ImGuiInputTextState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Data))
-+	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Size, C.wrap_ImGuiInputTextState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiInputTextState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Data))
+-	return func() vectors.Vector[int8] {
++	return func() vectors.Vector[datatypes.Char] {
+ 		result := C.wrap_ImGuiInputTextState_GetTextA(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg))
+-		return vectors.NewVectorFromC(result.Size, result.Capacity, (*int8)(result.Data))
++		return vectors.NewVectorFromC(result.Size, result.Capacity, (*datatypes.Char)(result.Data))
+ 	}()
  }
  
 -func (self *InputTextState) TextToRevertTo() vectors.Vector[int8] {
@@ -80,8 +93,12 @@ index 98bb1d24..706f4d6d 100644
  	defer func() {
  		selfFin()
  	}()
--	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Size, C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Capacity, (*int8)(C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Data))
-+	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Size, C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Data))
+-	return func() vectors.Vector[int8] {
++	return func() vectors.Vector[datatypes.Char] {
+ 		result := C.wrap_ImGuiInputTextState_GetTextToRevertTo(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg))
+-		return vectors.NewVectorFromC(result.Size, result.Capacity, (*int8)(result.Data))
++		return vectors.NewVectorFromC(result.Size, result.Capacity, (*datatypes.Char)(result.Data))
+ 	}()
  }
  
 -func (self *InputTextState) CallbackTextBackup() vectors.Vector[int8] {
@@ -91,12 +108,15 @@ index 98bb1d24..706f4d6d 100644
  	defer func() {
  		selfFin()
  	}()
--	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextState_GetCallbackTextBackup(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Size, C.wrap_ImGuiInputTextState_GetCallbackTextBackup(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Capacity, (*int8)(C.wrap_ImGuiInputTextState_GetCallbackTextBackup(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Data))
-+	return vectors.NewVectorFromC(C.wrap_ImGuiInputTextState_GetCallbackTextBackup(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Size, C.wrap_ImGuiInputTextState_GetCallbackTextBackup(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiInputTextState_GetCallbackTextBackup(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg)).Data))
+-	return func() vectors.Vector[int8] {
++	return func() vectors.Vector[datatypes.Char] {
+ 		result := C.wrap_ImGuiInputTextState_GetCallbackTextBackup(internal.ReinterpretCast[*C.ImGuiInputTextState](selfArg))
+-		return vectors.NewVectorFromC(result.Size, result.Capacity, (*int8)(result.Data))
++		return vectors.NewVectorFromC(result.Size, result.Capacity, (*datatypes.Char)(result.Data))
+ 	}()
  }
  
- func (self *InputTextState) BufCapacity() int32 {
-@@ -37405,13 +37406,13 @@ func (self TextBuffer) SetBuf(v vectors.Vector[int8]) {
+@@ -38152,15 +38153,15 @@ func (self TextBuffer) SetBuf(v vectors.Vector[int8]) {
  	C.wrap_ImGuiTextBuffer_SetBuf(selfArg, *vVecArg)
  }
  
@@ -107,13 +127,16 @@ index 98bb1d24..706f4d6d 100644
  	defer func() {
  		selfFin()
  	}()
--	return vectors.NewVectorFromC(C.wrap_ImGuiTextBuffer_GetBuf(internal.ReinterpretCast[*C.ImGuiTextBuffer](selfArg)).Size, C.wrap_ImGuiTextBuffer_GetBuf(internal.ReinterpretCast[*C.ImGuiTextBuffer](selfArg)).Capacity, (*int8)(C.wrap_ImGuiTextBuffer_GetBuf(internal.ReinterpretCast[*C.ImGuiTextBuffer](selfArg)).Data))
-+	return vectors.NewVectorFromC(C.wrap_ImGuiTextBuffer_GetBuf(internal.ReinterpretCast[*C.ImGuiTextBuffer](selfArg)).Size, C.wrap_ImGuiTextBuffer_GetBuf(internal.ReinterpretCast[*C.ImGuiTextBuffer](selfArg)).Capacity, (*datatypes.Char)(C.wrap_ImGuiTextBuffer_GetBuf(internal.ReinterpretCast[*C.ImGuiTextBuffer](selfArg)).Data))
+-	return func() vectors.Vector[int8] {
++	return func() vectors.Vector[datatypes.Char] {
+ 		result := C.wrap_ImGuiTextBuffer_GetBuf(internal.ReinterpretCast[*C.ImGuiTextBuffer](selfArg))
+-		return vectors.NewVectorFromC(result.Size, result.Capacity, (*int8)(result.Data))
++		return vectors.NewVectorFromC(result.Size, result.Capacity, (*datatypes.Char)(result.Data))
+ 	}()
  }
  
- func (self TextFilter) SetInputBuf(v *[256]rune) {
 diff --git a/internal/type_wrapper.go b/internal/type_wrapper.go
-index f2129bc7..5026d548 100644
+index f2129bc7..850bb4dd 100644
 --- a/internal/type_wrapper.go
 +++ b/internal/type_wrapper.go
 @@ -8,6 +8,12 @@ import (

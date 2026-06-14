@@ -46,7 +46,7 @@ cloud.google.com/go/storage/experimental
 cloud.google.com/go/storage/internal
 cloud.google.com/go/storage/internal/apiv2
 cloud.google.com/go/storage/internal/apiv2/storagepb
-# github.com/AllenDang/cimgui-go v1.4.0
+# github.com/AllenDang/cimgui-go v1.4.0 => github.com/mmp/cimgui-go v0.0.0-20260603153430-77cbc0c31fec
 ## explicit; go 1.24.0
 github.com/AllenDang/cimgui-go
 github.com/AllenDang/cimgui-go/cwrappers
@@ -91,10 +91,13 @@ github.com/AllenDang/cimgui-go/cwrappers/imgui/examples/example_sdl2_opengl2
 github.com/AllenDang/cimgui-go/cwrappers/imgui/examples/example_sdl2_opengl3
 github.com/AllenDang/cimgui-go/cwrappers/imgui/examples/example_sdl2_sdlrenderer2
 github.com/AllenDang/cimgui-go/cwrappers/imgui/examples/example_sdl2_vulkan
+github.com/AllenDang/cimgui-go/cwrappers/imgui/examples/example_sdl2_wgpu
+github.com/AllenDang/cimgui-go/cwrappers/imgui/examples/example_sdl3_directx11
 github.com/AllenDang/cimgui-go/cwrappers/imgui/examples/example_sdl3_opengl3
 github.com/AllenDang/cimgui-go/cwrappers/imgui/examples/example_sdl3_sdlgpu3
 github.com/AllenDang/cimgui-go/cwrappers/imgui/examples/example_sdl3_sdlrenderer3
 github.com/AllenDang/cimgui-go/cwrappers/imgui/examples/example_sdl3_vulkan
+github.com/AllenDang/cimgui-go/cwrappers/imgui/examples/example_sdl3_wgpu
 github.com/AllenDang/cimgui-go/cwrappers/imgui/examples/example_win32_directx10
 github.com/AllenDang/cimgui-go/cwrappers/imgui/examples/example_win32_directx11
 github.com/AllenDang/cimgui-go/cwrappers/imgui/examples/example_win32_directx12
@@ -131,6 +134,7 @@ github.com/AllenDang/cimgui-go/cwrappers/imnodes/vcpkg/ports/ragel
 github.com/AllenDang/cimgui-go/cwrappers/imnodes/vcpkg/scripts/test_ports/vcpkg-ci-ankurvdev-embedresource/project
 github.com/AllenDang/cimgui-go/cwrappers/imnodes/vcpkg/scripts/test_ports/vcpkg-ci-soci/project
 github.com/AllenDang/cimgui-go/cwrappers/implot
+github.com/AllenDang/cimgui-go/cwrappers/implot/example
 github.com/AllenDang/cimgui-go/imgui
 github.com/AllenDang/cimgui-go/impl/glfw
 github.com/AllenDang/cimgui-go/impl/opengl3
@@ -401,15 +405,15 @@ github.com/gdamore/tcell/v2/terminfo/x/xterm_kitty
 ## explicit; go 1.12
 github.com/go-gl/gl/v2.1/gl
 github.com/go-gl/gl/v2.1/gl/KHR
-# github.com/go-gl/glfw/v3.3/glfw v0.0.0-20250301202403-da16c1255728
+# github.com/go-gl/glfw/v3.4/glfw v0.1.0-pre.1
 ## explicit; go 1.19
-github.com/go-gl/glfw/v3.3/glfw
-github.com/go-gl/glfw/v3.3/glfw/glfw/deps
-github.com/go-gl/glfw/v3.3/glfw/glfw/deps/glad
-github.com/go-gl/glfw/v3.3/glfw/glfw/deps/mingw
-github.com/go-gl/glfw/v3.3/glfw/glfw/deps/vs2008
-github.com/go-gl/glfw/v3.3/glfw/glfw/include/GLFW
-github.com/go-gl/glfw/v3.3/glfw/glfw/src
+github.com/go-gl/glfw/v3.4/glfw
+github.com/go-gl/glfw/v3.4/glfw/glfw/deps
+github.com/go-gl/glfw/v3.4/glfw/glfw/deps/glad
+github.com/go-gl/glfw/v3.4/glfw/glfw/deps/mingw
+github.com/go-gl/glfw/v3.4/glfw/glfw/deps/wayland
+github.com/go-gl/glfw/v3.4/glfw/glfw/include/GLFW
+github.com/go-gl/glfw/v3.4/glfw/glfw/src
 # github.com/go-jose/go-jose/v4 v4.1.4
 ## explicit; go 1.24.0
 github.com/go-jose/go-jose/v4
@@ -586,6 +590,17 @@ github.com/vmihailenco/msgpack/v5/msgpcode
 github.com/vmihailenco/tagparser/v2
 github.com/vmihailenco/tagparser/v2/internal
 github.com/vmihailenco/tagparser/v2/internal/parser
+# github.com/yuin/goldmark v1.7.13
+## explicit; go 1.22
+github.com/yuin/goldmark
+github.com/yuin/goldmark/ast
+github.com/yuin/goldmark/extension
+github.com/yuin/goldmark/extension/ast
+github.com/yuin/goldmark/parser
+github.com/yuin/goldmark/renderer
+github.com/yuin/goldmark/renderer/html
+github.com/yuin/goldmark/text
+github.com/yuin/goldmark/util
 # github.com/yusufpapurcu/wmi v1.2.4
 ## explicit; go 1.16
 github.com/yusufpapurcu/wmi
@@ -952,3 +967,4 @@ gopkg.in/natefinch/lumberjack.v2
 # gopkg.in/natefinch/npipe.v2 v2.0.0-20160621034901-c1b8fa8bdcce
 ## explicit
 gopkg.in/natefinch/npipe.v2
+# github.com/AllenDang/cimgui-go => github.com/mmp/cimgui-go v0.0.0-20260603153430-77cbc0c31fec
