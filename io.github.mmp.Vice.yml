@@ -22,8 +22,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/glfw/glfw.git
-        tag: 3.3.10
-        commit: dc46d3f8129712e42856c20e99a604a3b08ad581
+        tag: 3.4
+        commit: 7b6aead9fb88b3623e3b3725ebb42670cbe4c579
   - name: abseil-cpp
     buildsystem: cmake-ninja
     config-opts:
