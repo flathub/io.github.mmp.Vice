@@ -4,15 +4,15 @@
   dest: resources/models
   dest-filename: ggml-base.en-jlvatc-q5_0.bin
 - type: file
-  url: https://vice-resources.pharr.org/b861692c042876ce3134e607292d8f90bed2bc1eb5a1e74500576e8ca89d85f1
-  sha256: b861692c042876ce3134e607292d8f90bed2bc1eb5a1e74500576e8ca89d85f1
-  dest: resources/models
-  dest-filename: ggml-small.en-jlvatc-q5_0.bin
-- type: file
   url: https://vice-resources.pharr.org/c009de99eca9a979340e33a288528a491d5ecb79d007879685b1483957779367
   sha256: c009de99eca9a979340e33a288528a491d5ecb79d007879685b1483957779367
   dest: resources/models
   dest-filename: ggml-medium.en-jlvatc-q5_0.bin
+- type: file
+  url: https://vice-resources.pharr.org/b861692c042876ce3134e607292d8f90bed2bc1eb5a1e74500576e8ca89d85f1
+  sha256: b861692c042876ce3134e607292d8f90bed2bc1eb5a1e74500576e8ca89d85f1
+  dest: resources/models
+  dest-filename: ggml-small.en-jlvatc-q5_0.bin
 - type: file
   url: https://vice-resources.pharr.org/7b707d8cbac62846e829f32fae31ba02eeedeabfa0ab387a553daaf064a35b73
   sha256: 7b707d8cbac62846e829f32fae31ba02eeedeabfa0ab387a553daaf064a35b73
