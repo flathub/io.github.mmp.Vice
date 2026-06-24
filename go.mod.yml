@@ -408,10 +408,10 @@
   type: archive
   url: https://proxy.golang.org/github.com/rivo/uniseg/@v/v0.4.7.zip
 - dest: vendor/github.com/shoenig/go-m1cpu
-  sha256: 0ceab2ec73ef7d1291bd7663dd39203ee7037ee9dccb6fc3381ad819bd8550d1
+  sha256: 0509c3353504437f680dc2f972c80b3161affbd1c62fc774c7f50cffca8e98b6
   strip-components: 3
   type: archive
-  url: https://proxy.golang.org/github.com/shoenig/go-m1cpu/@v/v0.1.6.zip
+  url: https://proxy.golang.org/github.com/shoenig/go-m1cpu/@v/v0.2.1.zip
 - dest: vendor/github.com/spiffe/go-spiffe/v2
   sha256: b90f378c70e2c985f61893ca20bf3e8258bb4f66920af759276d330513d0d7d6
   strip-components: 4
