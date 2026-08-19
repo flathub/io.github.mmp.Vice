@@ -37,6 +37,11 @@
   strip-components: 5
   type: archive
   url: https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/s3/@v/v1.97.3.zip
+- dest: vendor/github.com/bradfitz/latlong
+  sha256: b041b6423591be62a12864c72222b8e23c4df27fe35eaa578afcf07847b46e98
+  strip-components: 3
+  type: archive
+  url: https://proxy.golang.org/github.com/bradfitz/latlong/@v/v0.0.0-20170410180902-f3db6d0dff40.zip
 - dest: vendor/github.com/brunoga/deep
   sha256: d544353e68483e745aa45fe302734257a4db2365c6f802571965124df077c812
   strip-components: 3
@@ -362,6 +367,11 @@
   strip-components: 3
   type: archive
   url: https://proxy.golang.org/github.com/go-ole/go-ole/@v/v1.2.6.zip
+- dest: vendor/github.com/golang/freetype
+  sha256: cdcb9e6a14933dcbf167b44dcd5083fc6a2e52c4fae8fb79747c691efeb7d84e
+  strip-components: 3
+  type: archive
+  url: https://proxy.golang.org/github.com/golang/freetype/@v/v0.0.0-20170609003504-e2365dfdc4a0.zip
 - dest: vendor/github.com/google/s2a-go
   sha256: bf8f4b159d3fc201477822ed2514e4f05f58c764b78ffed73ec0accce5fb7f07
   strip-components: 3
@@ -382,6 +392,11 @@
   strip-components: 4
   type: archive
   url: https://proxy.golang.org/github.com/googleapis/gax-go/v2/@v/v2.14.2.zip
+- dest: vendor/github.com/jonas-p/go-shp
+  sha256: ac1706c486b7ea7e83eecd1f773259098569d2fe3ad2a53cc32ff89a68915a8f
+  strip-components: 3
+  type: archive
+  url: https://proxy.golang.org/github.com/jonas-p/go-shp/@v/v0.1.1.zip
 - dest: vendor/github.com/josephspurrier/goversioninfo
   sha256: 5e5d8c1aced1a6f36fdbbb83471c545a4bcc6c9b5ea71aa48f251da16bb96499
   strip-components: 3
@@ -523,10 +538,10 @@
   type: archive
   url: https://proxy.golang.org/golang.org/x/crypto/@v/v0.52.0.zip
 - dest: vendor/golang.org/x/image
-  sha256: f494b7080958495072b8e2ea236a068983d97c41d4ee0ab268f282710e831469
+  sha256: dfa6f0db97442ba5f22a385e8f226334f79373cd59d2e3b91f8cdaa1d122d2be
   strip-components: 3
   type: archive
-  url: https://proxy.golang.org/golang.org/x/image/@v/v0.38.0.zip
+  url: https://proxy.golang.org/golang.org/x/image/@v/v0.41.0.zip
 - dest: vendor/golang.org/x/net
   sha256: 1fef7f3ac7fc69f85b7fa47df036c75ad2136f719072a2bb4b93fc79f90bc7c7
   strip-components: 3
