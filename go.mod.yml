@@ -87,11 +87,6 @@
   strip-components: 3
   type: archive
   url: https://proxy.golang.org/github.com/mmp/!icon!font!cpp!headers/@v/v0.0.0-20220907145128-86cc7607b455.zip
-- dest: vendor/github.com/mmp/earcut-go
-  sha256: e4ba897754914815e84e399c24d93475fb7995985078dfc640f3153ac975e8f6
-  strip-components: 3
-  type: archive
-  url: https://proxy.golang.org/github.com/mmp/earcut-go/@v/v0.0.0-20251026231138-15f3234fdcd1.zip
 - dest: vendor/github.com/mmp/squall
   sha256: cb048946fa3d857cede97804767328cf1154fb958e9afd89f0218c6f10e95ac8
   strip-components: 3
@@ -167,6 +162,11 @@
   strip-components: 3
   type: archive
   url: https://proxy.golang.org/gopkg.in/natefinch/lumberjack.v2/@v/v2.2.1.zip
+- dest: vendor/github.com/mmp/earcut
+  sha256: 52284dacb6aa2863030fc440468f1aa43d344f70efc81957f513f7465140daa9
+  strip-components: 3
+  type: archive
+  url: https://proxy.golang.org/github.com/mmp/earcut/@v/v0.0.0-20260825135629-4f5709f5dc2f.zip
 - dest: vendor/cel.dev/expr
   sha256: 12652bea2461aa29004d23052d3a08cb5911ab0a652469ef5da6efb37c12ee87
   strip-components: 2
@@ -543,10 +543,10 @@
   type: archive
   url: https://proxy.golang.org/golang.org/x/image/@v/v0.41.0.zip
 - dest: vendor/golang.org/x/net
-  sha256: 1fef7f3ac7fc69f85b7fa47df036c75ad2136f719072a2bb4b93fc79f90bc7c7
+  sha256: 21c29cd58b7a02de60a3cb5122d8f59bc3c96d4750f9c1bb77a270a64eb42e61
   strip-components: 3
   type: archive
-  url: https://proxy.golang.org/golang.org/x/net/@v/v0.54.0.zip
+  url: https://proxy.golang.org/golang.org/x/net/@v/v0.55.0.zip
 - dest: vendor/golang.org/x/term
   sha256: 0d12dd77f2c620f236e59421d604f6bcd1f9212a4083a1c0ec13425c67bc6e81
   strip-components: 3
