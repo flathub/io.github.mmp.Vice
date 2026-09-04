@@ -523,9 +523,9 @@ github.com/lufia/plan9stats
 # github.com/mmp/IconFontCppHeaders v0.0.0-20220907145128-86cc7607b455
 ## explicit; go 1.19
 github.com/mmp/IconFontCppHeaders
-# github.com/mmp/earcut-go v0.0.0-20251026231138-15f3234fdcd1
-## explicit; go 1.19
-github.com/mmp/earcut-go
+# github.com/mmp/earcut v0.0.0-20260825135629-4f5709f5dc2f
+## explicit; go 1.24
+github.com/mmp/earcut
 # github.com/mmp/squall v0.0.0-20260310141042-e3ce8bc98323
 ## explicit; go 1.23
 github.com/mmp/squall
@@ -747,7 +747,7 @@ golang.org/x/exp/constraints
 # golang.org/x/image v0.41.0
 ## explicit; go 1.25.0
 golang.org/x/image/colornames
-# golang.org/x/net v0.54.0
+# golang.org/x/net v0.55.0
 ## explicit; go 1.25.0
 golang.org/x/net/http/httpguts
 golang.org/x/net/http2
