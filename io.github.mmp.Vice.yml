@@ -239,7 +239,7 @@ modules:
       - cmake -B build -S vendor/github.com/AllenDang/cimgui-go/lib -G Ninja
       - ninja -C build
       - cp build/cimgui.a vendor/github.com/AllenDang/cimgui-go/lib/linux/cimgui.a
-      - go run ./cmd/bundleresources/bundleresources.go --no-upload && mv manifest.json cmd/vice/manifest.json
+      - go run ./cmd/bundleresources/bundleresources.go --no-upload && mv manifest.json util/manifest.json
       - ./build.sh --release --vulkan
       - install -Dm755 vice /app/bin/vice
       - mkdir -p /app/bin/fonts && cp -r fonts/*.zst /app/bin/fonts
