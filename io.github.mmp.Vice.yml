@@ -242,6 +242,7 @@ modules:
       - go run ./cmd/bundleresources/bundleresources.go --no-upload && mv manifest.json util/manifest.json
       - ./build.sh --release --vulkan
       - install -Dm755 vice /app/bin/vice
+      - install -Dm755 backshop /app/bin/backshop
       - mkdir -p /app/bin/fonts && cp -r fonts/*.zst /app/bin/fonts
       - install -D -t /app/bin vice-wrapper.sh
       - install -Dm644 cmd/vice/icons/generic/vice-icon-256.png /app/share/icons/hicolor/256x256/apps/io.github.mmp.Vice.png
