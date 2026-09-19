@@ -135,8 +135,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/libeigen/eigen.git
-        tag: 3.4.1
-        commit: d71c30c47858effcbd39967097a2d99ee48db464
+        tag: 5.0.1
+        commit: bc3b39870ecb690a623a3f49149a358b95c5781d
   - name: onnxruntime
     buildsystem: cmake-ninja
     subdir: cmake
