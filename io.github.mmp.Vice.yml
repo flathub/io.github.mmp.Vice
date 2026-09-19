@@ -249,6 +249,7 @@ modules:
       - install -Dm644 cmd/vice/icons/generic/vice-icon-128.png /app/share/icons/hicolor/128x128/apps/io.github.mmp.Vice.png
       - install -Dm644 cmd/vice/icons/generic/vice-icon-48.png /app/share/icons/hicolor/48x48/apps/io.github.mmp.Vice.png
       - install -Dm644 linux/io.github.mmp.Vice.desktop -t /app/share/applications
+      - install -Dm644 linux/io.github.mmp.Vice.Backshop.desktop -t /app/share/applications
       - desktop-file-edit --set-key=Exec --set-value='/app/bin/vice-wrapper.sh' /app/share/applications/io.github.mmp.Vice.desktop
       - install -Dm644 linux/io.github.mmp.Vice.metainfo.xml /app/share/metainfo/io.github.mmp.Vice.metainfo.xml
     build-options:
