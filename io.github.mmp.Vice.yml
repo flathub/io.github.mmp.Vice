@@ -32,7 +32,7 @@ modules:
       - type: git
         url: https://github.com/abseil/abseil-cpp.git
         tag: 20250814.0
-        commit: a9eb1d648cbca4d4d788737e971a6a7a63726b07
+        commit: 987c57f325f7fa8472fa84e1f885f7534d391b0d
   - name: re2
     buildsystem: cmake-ninja
     config-opts:
@@ -50,7 +50,7 @@ modules:
       - type: git
         url: https://github.com/protocolbuffers/protobuf.git
         tag: v33.6
-        commit: f0dc78d7e6e331b8c6bb2d5283e06aa26883ca7c
+        commit: 6e1998413a5bca7c058b85999667893f167434bc
   - name: date
     buildsystem: cmake-ninja
     sources:
@@ -85,7 +85,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/pytorch/cpuinfo.git
-        commit: 6e2be17c110e4f4184b059303c722b3c5bd080a6
+        commit: 66ee79c038d70dad9f08705b2c9b3e58f6d8f512
   - name: gsl
     buildsystem: cmake-ninja
     config-opts:
@@ -95,7 +95,7 @@ modules:
       - type: git
         url: https://github.com/microsoft/GSL.git
         tag: v4.2.1
-        commit: 1094e3bb7a8af763dcb136ccd676e6e75e614eec
+        commit: 249146590e322123cd0b378b1f364d6069717687
   - name: safeint
     buildsystem: simple
     build-commands:
@@ -124,7 +124,7 @@ modules:
       - type: git
         url: https://github.com/onnx/onnx.git
         tag: v1.22.0
-        commit: 2b2cd58ac7a26df5371266149e0c76776330cdf1
+        commit: 2bb50465112feca9003e1ed654d77f01ff1415ca
   - name: eigen3
     buildsystem: cmake-ninja
     builddir: true
