@@ -31,8 +31,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/abseil/abseil-cpp.git
-        tag: 20250512.1
-        commit: 76bb24329e8bf5f39704eb10d21b9a80befa7c81
+        tag: 20250814.0
+        commit: a9eb1d648cbca4d4d788737e971a6a7a63726b07
   - name: re2
     buildsystem: cmake-ninja
     config-opts:
@@ -49,7 +49,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/protocolbuffers/protobuf.git
-        tag: v21.12
+        tag: v33.6
         commit: f0dc78d7e6e331b8c6bb2d5283e06aa26883ca7c
   - name: date
     buildsystem: cmake-ninja
@@ -85,7 +85,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/pytorch/cpuinfo.git
-        commit: 403d652dca4c1046e8145950b1c0997a9f748b57
+        commit: 6e2be17c110e4f4184b059303c722b3c5bd080a6
   - name: gsl
     buildsystem: cmake-ninja
     config-opts:
@@ -94,8 +94,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/microsoft/GSL.git
-        tag: v4.0.0
-        commit: a3534567187d2edc428efd3f13466ff75fe5805c
+        tag: v4.2.1
+        commit: 1094e3bb7a8af763dcb136ccd676e6e75e614eec
   - name: safeint
     buildsystem: simple
     build-commands:
@@ -123,8 +123,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/onnx/onnx.git
-        tag: v1.20.1
-        commit: d3f6b795aedb48eaecc881bf5e8f5dd6efbe25b3
+        tag: v1.22.0
+        commit: 2b2cd58ac7a26df5371266149e0c76776330cdf1
   - name: eigen3
     buildsystem: cmake-ninja
     builddir: true
@@ -148,12 +148,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/microsoft/onnxruntime.git
-        tag: v1.23.2
-        commit: a83fc4d58cb48eb68890dd689f94f28288cf2278
-      - type: patch
-        path: patches/onnxruntime-cstdint.patch
-      - type: patch
-        path: patches/onnxruntime-range-loop.patch
+        tag: v1.30.0
+        commit: f2c39fe2f838cf35ce7da92824f5a5e3ee6e88a7
+      # - type: patch
+      #   path: patches/onnxruntime-cstdint.patch
+      # - type: patch
+      #   path: patches/onnxruntime-range-loop.patch
   - name: sherpa-onnx
     buildsystem: cmake-ninja
     builddir: true
