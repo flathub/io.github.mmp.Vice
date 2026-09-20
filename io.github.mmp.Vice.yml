@@ -153,10 +153,6 @@ modules:
         url: https://github.com/microsoft/onnxruntime.git
         tag: v1.30.0
         commit: f2c39fe2f838cf35ce7da92824f5a5e3ee6e88a7
-      # - type: patch
-      #   path: patches/onnxruntime-cstdint.patch
-      # - type: patch
-      #   path: patches/onnxruntime-range-loop.patch
   - name: sherpa-onnx
     buildsystem: cmake-ninja
     builddir: true
@@ -166,7 +162,6 @@ modules:
         SHERPA_ONNXRUNTIME_LIB_DIR: /app/lib
     config-opts:
       - -DBUILD_SHARED_LIBS=OFF
-      #- -DFETCHCONTENT_FULLY_DISCONNECTED=ON
       - -DSHERPA_ONNX_ENABLE_BINARY=OFF
       - -DSHERPA_ONNX_ENABLE_TTS=ON
       - -DSHERPA_ONNX_ENABLE_CHECK=OFF
