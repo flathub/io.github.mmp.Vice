@@ -46,6 +46,7 @@ modules:
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+      - -Dprotobuf_BUILD_TESTS=OFF
     sources:
       - type: git
         url: https://github.com/protocolbuffers/protobuf.git
@@ -140,6 +141,8 @@ modules:
   - name: onnxruntime
     buildsystem: cmake-ninja
     subdir: cmake
+    build-options:
+      cxxflags: -Wno-error=maybe-uninitialized
     config-opts:
       - -DFETCHCONTENT_FULLY_DISCONNECTED=ON
       - -Donnxruntime_BUILD_UNIT_TESTS=OFF
