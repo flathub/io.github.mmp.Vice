@@ -1,6 +1,6 @@
 id: io.github.mmp.Vice
 runtime: org.freedesktop.Platform
-runtime-version: "25.08"
+runtime-version: "26.08"
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.golang
@@ -31,8 +31,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/abseil/abseil-cpp.git
-        tag: 20250512.1
-        commit: 76bb24329e8bf5f39704eb10d21b9a80befa7c81
+        tag: 20250814.0
+        commit: 987c57f325f7fa8472fa84e1f885f7534d391b0d
   - name: re2
     buildsystem: cmake-ninja
     config-opts:
@@ -46,11 +46,12 @@ modules:
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+      - -Dprotobuf_BUILD_TESTS=OFF
     sources:
       - type: git
         url: https://github.com/protocolbuffers/protobuf.git
-        tag: v21.12
-        commit: f0dc78d7e6e331b8c6bb2d5283e06aa26883ca7c
+        tag: v33.6
+        commit: 6e1998413a5bca7c058b85999667893f167434bc
   - name: date
     buildsystem: cmake-ninja
     sources:
@@ -85,7 +86,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/pytorch/cpuinfo.git
-        commit: 403d652dca4c1046e8145950b1c0997a9f748b57
+        commit: 66ee79c038d70dad9f08705b2c9b3e58f6d8f512
   - name: gsl
     buildsystem: cmake-ninja
     config-opts:
@@ -94,8 +95,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/microsoft/GSL.git
-        tag: v4.0.0
-        commit: a3534567187d2edc428efd3f13466ff75fe5805c
+        tag: v4.2.1
+        commit: 249146590e322123cd0b378b1f364d6069717687
   - name: safeint
     buildsystem: simple
     build-commands:
@@ -123,8 +124,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/onnx/onnx.git
-        tag: v1.20.1
-        commit: d3f6b795aedb48eaecc881bf5e8f5dd6efbe25b3
+        tag: v1.22.0
+        commit: 2bb50465112feca9003e1ed654d77f01ff1415ca
   - name: eigen3
     buildsystem: cmake-ninja
     builddir: true
@@ -135,11 +136,13 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/libeigen/eigen.git
-        tag: 3.4.1
-        commit: d71c30c47858effcbd39967097a2d99ee48db464
+        tag: 5.0.1
+        commit: bc3b39870ecb690a623a3f49149a358b95c5781d
   - name: onnxruntime
     buildsystem: cmake-ninja
     subdir: cmake
+    build-options:
+      cxxflags: -Wno-error=maybe-uninitialized
     config-opts:
       - -DFETCHCONTENT_FULLY_DISCONNECTED=ON
       - -Donnxruntime_BUILD_UNIT_TESTS=OFF
@@ -148,12 +151,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/microsoft/onnxruntime.git
-        tag: v1.23.2
-        commit: a83fc4d58cb48eb68890dd689f94f28288cf2278
-      - type: patch
-        path: patches/onnxruntime-cstdint.patch
-      - type: patch
-        path: patches/onnxruntime-range-loop.patch
+        tag: v1.30.0
+        commit: f2c39fe2f838cf35ce7da92824f5a5e3ee6e88a7
   - name: sherpa-onnx
     buildsystem: cmake-ninja
     builddir: true
@@ -163,7 +162,6 @@ modules:
         SHERPA_ONNXRUNTIME_LIB_DIR: /app/lib
     config-opts:
       - -DBUILD_SHARED_LIBS=OFF
-      #- -DFETCHCONTENT_FULLY_DISCONNECTED=ON
       - -DSHERPA_ONNX_ENABLE_BINARY=OFF
       - -DSHERPA_ONNX_ENABLE_TTS=ON
       - -DSHERPA_ONNX_ENABLE_CHECK=OFF
