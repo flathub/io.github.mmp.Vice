@@ -13,16 +13,15 @@ finish-args:
   - --device=dri
   - --filesystem=xdg-run/app/com.discordapp.Discord:create
 cleanup:
-    - /include
-    - /lib/*.a
-    - /lib/pkgconfig
-    - /share/pkgconfig
-    - /lib/cmake
-    - /share/cmake
-    - /bin/protoc*
-    - /lib/debug
-    - /share/eigen3
-    - /share/cpuinfo
+  - /include
+  - /lib/*.a
+  - /lib/pkgconfig
+  - /share/pkgconfig
+  - /lib/cmake
+  - /share/cmake
+  - /bin/protoc*
+  - /share/eigen3
+  - /share/cpuinfo
 modules:
   - name: glfw
     buildsystem: cmake-ninja
