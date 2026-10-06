@@ -1,8 +1,8 @@
 diff --git a/build.sh b/build.sh
-index c91b0642..a66211ad 100755
+index b935e1b4..8e35024e 100755
 --- a/build.sh
 +++ b/build.sh
-@@ -510,16 +510,6 @@ if needs_whisper_build || dep_args_changed whisper.cpp/build_go "${WHISPER_CMAKE
+@@ -527,16 +527,6 @@ if needs_whisper_build || dep_args_changed whisper.cpp/build_go "${WHISPER_CMAKE
      build_dep whisper-cpp whisper.cpp whisper.cpp/build_go "${WHISPER_CMAKE_ARGS[@]}"
  fi
  
@@ -11,7 +11,7 @@ index c91b0642..a66211ad 100755
 -
 -    if [ ! -f "$SHERPA_ONNXRUNTIME_LIB" ]; then
 -        echo "Error: sherpa-onnx did not produce $SHERPA_ONNXRUNTIME_LIB"
--        echo "It linked a system-installed onnxruntime instead; tts/tts.go needs its own."
+-        echo "It linked a system-installed onnxruntime instead; speech/tts/tts.go needs its own."
 -        exit 1
 -    fi
 -fi
@@ -19,3 +19,4 @@ index c91b0642..a66211ad 100755
  if [ "$DO_CHECK" = true ]; then
      run_checks
  fi
+ 
