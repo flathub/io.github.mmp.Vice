@@ -88,10 +88,10 @@
   type: archive
   url: https://proxy.golang.org/github.com/mmp/!icon!font!cpp!headers/@v/v0.0.0-20220907145128-86cc7607b455.zip
 - dest: vendor/github.com/mmp/squall
-  sha256: cb048946fa3d857cede97804767328cf1154fb958e9afd89f0218c6f10e95ac8
+  sha256: 711b784899ee25f08e9d2b643e8870ee5c4f3a9b97d27e197978ca395fc9aee4
   strip-components: 3
   type: archive
-  url: https://proxy.golang.org/github.com/mmp/squall/@v/v0.0.0-20260310141042-e3ce8bc98323.zip
+  url: https://proxy.golang.org/github.com/mmp/squall/@v/v0.0.0-20261001224140-6bfa530e5b04.zip
 - dest: vendor/github.com/ncruces/zenity
   sha256: 601431a869b32bc66dabc2a78f76c0e3a938ac29e2443198d5ad8df2731ae584
   strip-components: 3
