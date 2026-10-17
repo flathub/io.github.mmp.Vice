@@ -1,0 +1,64 @@
+name: Check for updates
+on:
+  workflow_dispatch:
+    inputs:
+      sha:
+        description: upstream sha to base the release on
+        required: true
+jobs:
+  update-beta:
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'flathub'
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: beta
+          path: flathub
+      - uses: actions/checkout@v6
+        with:
+          repository: mmp/vice
+          ref: ${{ inputs.sha }}
+          path: vice
+      - name: Setup Go
+        uses: actions/setup-go@v6
+      - name: Update go modules
+        working-directory: flathub
+        run: |
+          go run github.com/dennwc/flatpak-go-mod@latest ../vice
+      - name: Update vice resources
+        working-directory: vice
+        run: |
+          BASE_URL="https://vice-resources.pharr.org"
+
+          jq -r 'to_entries[] | "\(.key)\t\(.value.hash)\t\(.value.size)"' resources.json | \
+          while IFS=$'\t' read -r filepath hash size; do
+            dir=$(dirname "$filepath")
+            filename=$(basename "$filepath")
+            if [[ "$dir" == "." ]]; then
+                dest="resources/models"
+            else
+                dest="resources/models/${dir}"
+            fi
+            echo "- type: file"
+            echo "  url: ${BASE_URL}/${hash}"
+            echo "  sha256: ${hash}"
+            echo "  dest: ${dest}"
+            echo "  dest-filename: ${filename}"
+          done > ../flathub/vice-resources.yaml
+      - name: Update commit sha
+        working-directory: flathub
+        run: |
+          yq -i '(.modules[] | select(.name == "vice") | .sources[0].commit) = "${{ inputs.sha }}"' io.github.mmp.Vice.yml
+      - name: Create pull request
+        if: ${{ success() }}
+        id: create-pr
+        uses: peter-evans/create-pull-request@v8
+        with:
+          path: flathub
+          branch: update/${{ inputs.sha }}
+          commit-message: update to ${{ inputs.sha }}
+          title: Update to ${{ inputs.sha }}
+          delete-branch: true
+          sign-commits: true
+          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
