@@ -532,12 +532,13 @@ github.com/mmp/IconFontCppHeaders
 # github.com/mmp/earcut v0.0.0-20260825135629-4f5709f5dc2f
 ## explicit; go 1.24
 github.com/mmp/earcut
-# github.com/mmp/squall v0.0.0-20260310141042-e3ce8bc98323
+# github.com/mmp/squall v0.0.0-20261001224140-6bfa530e5b04
 ## explicit; go 1.23
 github.com/mmp/squall
 github.com/mmp/squall/data
 github.com/mmp/squall/grid
 github.com/mmp/squall/internal
+github.com/mmp/squall/internal/jpeg2000
 github.com/mmp/squall/product
 github.com/mmp/squall/section
 github.com/mmp/squall/tables
